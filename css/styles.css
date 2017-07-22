@@ -1,0 +1,32 @@
+@font-face {
+    font-family: 'Fei';
+    src:  url('fonts/FeijoaTest-MediumItalic.woff2') format('woff2'),
+    url('fonts/FeijoaTest-MediumItalic.woff') format('woff');
+}
+@font-face {
+    font-family: 'NationalBook';
+    src:  url('fonts/NationalTest-Book.woff2') format('woff2'),
+    url('fonts/NationalTest-Book.woff') format('woff');
+}
+@font-face {
+    font-family: 'NationalLight';
+    src:  url('fonts/NationalTest-Light.woff2') format('woff2'),
+    url('fonts/NationalTest-Light.woff') format('woff');
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+}
+/*menu section*/
+.menu-holder{
+    overflow-x: hidden;
+    height: 100vh;
+}
+.menu-div{
+    width: 100vw;
+    height: 100vh;
+    transform: translateX(calc(50px - 100vw));
+    background-color: #005d3d;
+}
+
