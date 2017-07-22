@@ -18,15 +18,120 @@ body{
     margin: 0px;
     padding: 0px;
 }
+ul{
+    margin: 0px;
+}
+.width-calc{
+    width: 290px;
+}
 /*menu section*/
-.menu-holder{
+.menu-section{
     overflow-x: hidden;
     height: 100vh;
 }
-.menu-div{
+.menu-area{
     width: 100vw;
     height: 100vh;
-    transform: translateX(calc(50px - 100vw));
+    transform: translateX(calc(30px - 100vw));
     background-color: #005d3d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.menu-holder{
+    width: calc(100vw - 30px);
+}
+.hamburger{
+    width: 20px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.hamburger-inner{
+    width: 20px;
+    height: 1px;
+    background-color: white;
+    display: block;
+    position: relative;
+}
+.hamburger-inner:before,
+.hamburger-inner:after{
+    content: " ";
+    position: absolute;
+    width: 16px;
+    height: 1px;
+    background-color: white;
+    transition-property: transform;
+    transition-duration: 0.25s;
+    transition-timing-function: ease;
+}
+.hamburger-inner:before{
+    top: -9px;
+    left: 0px;
+}
+.hamburger-inner:after{
+    top: 9px;
+    left: 0px;
+}
+.hamburger.open .hamburger-inner:before{
+    transform: translate3d(-5px, 5px, 0) rotate(-45deg) scale(0.7, 1);
+}
+.hamburger.open .hamburger-inner:after{
+    transform: translate3d(-5px, -5px, 0) rotate(45deg) scale(0.7, 1);
+}
+/*media queries*/
+@media (min-width: 579px) {
+    .width-calc{
+        width: 550px;
+    }
+}
+@media (min-width: 768px) {
+    .width-calc{
+        width: 730px;
+    }
+    .menu-area{
+        transform: translateX(calc(50px - 100vw));
+    }
+    .menu-holder{
+        width: calc(100vw - 40px);
+    }
+    .hamburger{
+        width: 40px;
+    }
+    .hamburger-inner{
+        width: 30px;
+    }
+    .hamburger-inner:before,
+    .hamburger-inner:after{
+        width: 25px;
+    }
+    .hamburger-inner:before{
+        top: -12px;
+    }
+    .hamburger-inner:after{
+        top: 12px;
+    }
+    .hamburger.open .hamburger-inner:before{
+        transform: translate3d(-6px, 6px, 0) rotate(-45deg) scale(0.7, 1);
+    }
+    .hamburger.open .hamburger-inner:after{
+        transform: translate3d(-6px, -6px, 0) rotate(45deg) scale(0.7, 1);
+    }
+}
+@media (min-width: 992px) {
+    .width-calc{
+        width: 960px;
+    }
+}
+@media (min-width: 1200px) {
+    .width-calc{
+        width: 1170px;
+    }
+}
+@media (min-width: 1600px) {
+    .width-calc{
+        width: 1570px;
+    }
 }
 
