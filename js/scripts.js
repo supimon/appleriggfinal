@@ -11,6 +11,7 @@
                 easing: 'easeInOutQuart',
                 complete: function(){
                     $('.hamburger').removeClass('open');
+                    $('.cool-line').removeClass('collapse-line');
                 }
             });
         }
@@ -20,6 +21,7 @@
                 translateX: [menuAreaLeftPos, 0],
                 easing: 'easeInOutQuart',
                 complete: function(){
+                    $('.cool-line').addClass('collapse-line');
                     $('.hamburger').addClass('open');
                     hamburgerTimer = setInterval(function () {
                         var arrowTimeline = anime.timeline();

@@ -80,10 +80,109 @@ ul{
 .hamburger.open .hamburger-inner:after{
     transform: translate3d(-5px, -5px, 0) rotate(45deg) scale(0.7, 1);
 }
+.menu-holder > *{
+    margin-left: 12%;
+}
+nav{
+    display: inline-block;
+    margin-top: 70px;
+    margin-bottom: 40px;
+}
+nav, .menu-holder address{
+    width: 240px;
+}
+nav ul{
+    font-family: 'NationalLight', Arial, sans-serif;
+    font-size: 32px;
+    list-style: none;
+    color: white;
+    padding: 0px;
+}
+nav ul li{
+    margin-bottom: 24px;
+}
+.menu-holder address{
+    text-align: left;
+    font-family: 'NationalLight', Arial, sans-serif;
+    font-size: 14px;
+    color: white;
+    font-style: normal;
+    display: inline-block;
+    letter-spacing: 0.5px;
+    line-height: 21px;
+}
+.menu-holder .cool-line {
+    background-color: white;
+    height: 1px;
+    margin-bottom: 30px;
+}
+
+
+/*animation classes*/
+.collapse-line{
+    -webkit-animation-name: collapseLine;
+    animation-name: collapseLine;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+/*keyframe animations*/
+@-webkit-keyframes collapseLine {
+    0% {
+        width: 100%;
+    }
+    25% {
+        width: 23%;
+    }
+    30% {
+        width: 9%;
+    }
+    50% {
+        width: 7%;
+    }
+    100% {
+        width: 8%;
+    }
+}
+@keyframes collapseLine {
+    0% {
+        width: 100%;
+    }
+    25% {
+        width: 23%;
+    }
+    30% {
+        width: 9%;
+    }
+    50% {
+        width: 7%;
+    }
+    100% {
+        width: 8%;
+    }
+}
+
 /*media queries*/
 @media (min-width: 579px) {
     .width-calc{
         width: 550px;
+    }
+    nav, .menu-holder address{
+        width: 300px;
+    }
+    nav ul{
+        font-size: 40px;
+    }
+    nav ul li{
+        margin-bottom: 37px;
+    }
+    .menu-holder address{
+        font-size: 16px;
+        line-height: 26px;
     }
 }
 @media (min-width: 768px) {
@@ -118,20 +217,111 @@ ul{
     .hamburger.open .hamburger-inner:after{
         transform: translate3d(-6px, -6px, 0) rotate(45deg) scale(0.7, 1);
     }
+
+    /*animations*/
+    @-webkit-keyframes collapseLine {
+        0% {
+            width: 100%;
+        }
+        25% {
+            width: 23%;
+        }
+        30% {
+            width: 4%;
+        }
+        50% {
+            width: 2%;
+        }
+        100% {
+            width: 3%;
+        }
+    }
+    @keyframes collapseLine {
+        0% {
+            width: 100%;
+        }
+        25% {
+            width: 23%;
+        }
+        30% {
+            width: 4%;
+        }
+        50% {
+            width: 2%;
+        }
+        100% {
+            width: 3%;
+        }
+    }
 }
 @media (min-width: 992px) {
     .width-calc{
         width: 960px;
+    }
+    .menu-holder{
+        text-align: center;
+    }
+    .menu-holder > *{
+        margin-left: 0px;
+    }
+    nav{
+        margin-top: 170px;
+        margin-bottom: 120px;
+    }
+    nav, .menu-holder address{
+        width: 700px;
+    }
+    nav ul {
+        font-size: 40px;
+    }
+    nav ul li{
+        display: inline;
+        margin: 0px 7.1%;
+    }
+    nav ul li:first-child{
+        margin-left: 0px;
+    }
+    nav ul li:last-child{
+        margin-right: 0px;
+    }
+    .menu-holder .cool-line{
+        margin-bottom: 40px;
     }
 }
 @media (min-width: 1200px) {
     .width-calc{
         width: 1170px;
     }
+    nav{
+        margin-top: 170px;
+        margin-bottom: 120px;
+    }
+    nav, .menu-holder address{
+        width: 980px;
+    }
+    nav ul {
+        font-size: 48px;
+    }
+    nav ul li{
+        margin: 0px 9.7%;
+    }
 }
 @media (min-width: 1600px) {
     .width-calc{
         width: 1570px;
+    }
+    nav{
+        margin-top: 190px;
+        margin-bottom: 140px;
+    }
+    nav, .menu-holder address{
+        width: 1140px;
+    }
+    nav ul {
+        font-size: 60px;
+    }
+    nav ul li{
+        margin: 0px 8.5%;
     }
 }
 
