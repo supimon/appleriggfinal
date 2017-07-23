@@ -25,10 +25,6 @@ ul{
     width: 290px;
 }
 /*menu section*/
-.menu-section{
-    overflow-x: hidden;
-    height: 100vh;
-}
 .menu-area{
     width: 100vw;
     height: 100vh;
@@ -37,6 +33,8 @@ ul{
     display: flex;
     align-items: center;
     justify-content: center;
+    position: fixed;
+    z-index: 5;
 }
 .menu-holder{
     width: calc(100vw - 30px);
@@ -258,6 +256,7 @@ nav ul li{
     .width-calc{
         width: 960px;
     }
+    /*menu section*/
     .menu-holder{
         text-align: center;
     }
@@ -287,11 +286,84 @@ nav ul li{
     .menu-holder .cool-line{
         margin-bottom: 40px;
     }
+
+    /*body section*/
+    .body-section{
+        white-space: nowrap;
+        height: 100vh;
+        overflow-y: hidden;
+    }
+    .body-section > *{
+        height: 100vh;
+        display: inline-block;
+    }
+    /*our boards section*/
+    .board-section{
+        width: 100vw;
+    }
+    .board-section .gallery, .board-section .details{
+        width: 50%;
+        display: inline-block;
+        white-space: normal;
+        float: left;
+    }
+    .board-section .details{
+        height: 90vh;
+        padding-top: 10vh;
+    }
+    .board-section .gallery{
+        height: 100vh;
+    }
+    .gallery > *{
+        margin-left: 11vw;
+        margin-right: 3vw;
+    }
+    .gallery h2{
+        font-family: 'NationalLight', Arial, sans-serif;
+        color: #005d3d;
+        font-size: 30px;
+        margin-top: 10vh;
+    }
+    .board-section .title-position h3{
+        font-family: 'NationalBook', Arial, sans-serif;
+        color: #005d3d;
+        font-size: 24px;
+        margin-bottom: 0px;
+    }
+    .board-section .title-position p{
+        font-size: 13px;
+        line-height: 15px;
+        font-family: 'Fei', Georgia, serif;
+    }
+    .board-section .person-intro{
+        max-height: 89vh;
+        overflow-y: scroll;
+    }
+    .board-section .person-intro h3{
+        font-family: 'NationalLight', Arial, sans-serif;
+        color: #005d3d;
+        font-size: 24px;
+        margin-top: 0px;
+    }
+    .board-section .person-intro p{
+        font-family: 'NationalLight', Arial, sans-serif;
+        font-size: 16px;
+        color: #404040;
+        position: relative;
+        letter-spacing: 0.2px;
+        line-height: 23px;
+    }
+    .board-section .details > *{
+        margin-left: 30px;
+        margin-right: 40px;
+    }
+
 }
 @media (min-width: 1200px) {
     .width-calc{
         width: 1170px;
     }
+    /*menu section*/
     nav{
         margin-top: 170px;
         margin-bottom: 120px;
@@ -305,11 +377,46 @@ nav ul li{
     nav ul li{
         margin: 0px 9.7%;
     }
+
+    /*our boards section*/
+    .gallery > * {
+        margin-left: 140px;
+    }
+    .gallery h2{
+        margin-top: 15vh;
+    }
+    .board-section .details{
+        height: 85vh;
+        padding-top: 15vh;
+    }
+    .board-section .person-intro{
+        max-height: 84vh;
+    }
+    .board-section .title-position h3{
+        font-size: 26px;
+        letter-spacing: 0.5px;
+    }
+    .board-section .title-position p{
+        font-size: 14px;
+        line-height: 16px;
+    }
+    .board-section .person-intro h3{
+        font-size: 26px;
+    }
+    .board-section .person-intro p{
+        font-size: 18px;
+        line-height: 25px;
+    }
+    .board-section .details > * {
+        margin-left: 30px;
+        margin-right: 17%;
+    }
 }
 @media (min-width: 1600px) {
     .width-calc{
         width: 1570px;
     }
+    /*menu section*/
     nav{
         margin-top: 190px;
         margin-bottom: 140px;
@@ -322,6 +429,19 @@ nav ul li{
     }
     nav ul li{
         margin: 0px 8.5%;
+    }
+
+    /*board section*/
+    .board-section .title-position p{
+        font-size: 15px;
+    }
+    .board-section .person-intro p {
+        font-size: 20px;
+        line-height: 29px;
+    }
+    .board-section .details > * {
+        margin-left: 10%;
+        margin-right: 22%;
     }
 }
 
