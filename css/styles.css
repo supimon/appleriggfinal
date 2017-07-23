@@ -24,6 +24,67 @@ ul{
 .width-calc{
     width: 290px;
 }
+
+/*logo*/
+.mobile-logo-holder{
+    padding-top: 28px;
+    padding-bottom: 20px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 2;
+    margin: 0px;
+}
+.mobile-logo{
+    width: 22%;
+    display: block;
+    margin: 0 auto;
+    min-width: 186px;
+}
+/*section slider dots*/
+.section-slider {
+    display: none;
+}
+.slide-indicator-ul {
+    padding: 0px;
+}
+.slide-indicator-ul li {
+    display: inline-block;
+    margin: 0px;
+    padding: 0px;
+    width: 30px;
+    height: 7px;
+    position: relative;
+}
+.slide-indicator-ul li:before {
+    content: " ";
+    position: absolute;
+    top: 10px;
+    left: 16px;
+    width: 30px;
+    height: 1px;
+    background-color: grey;
+}
+.slide-indicator-ul li:last-child:before{
+    width: 0px;
+}
+.slide-indicator-ul li a {
+    display: inline-block;
+    width: 7px;
+    border-radius: 4px;
+    height: 100%;
+    background-color: grey;
+    transition-property: transform;
+    transition-duration: 0.25s;
+    transition-timing-function: ease;
+}
+.slide-indicator-ul li a:hover {
+    transform: scale(1.5, 1.5);
+}
+.slide-indicator-ul li.is-active a {
+    background-color: #005d3d;
+}
 /*menu section*/
 .menu-area{
     width: 100vw;
@@ -256,6 +317,25 @@ nav ul li{
     .width-calc{
         width: 960px;
     }
+    /*logo*/
+    .mobile-logo-holder {
+        left: auto;
+        right: 37px;
+        width: 20%;
+        background-color: transparent;
+    }
+    .section-slider {
+        display: inline-block;
+        width: 200px;
+        position: fixed;
+        top: auto;
+        left: auto;
+        right: 0px;
+        bottom: 20px;
+    }
+    .slide-indicator-ul li:before {
+        left: 7px;
+    }
     /*menu section*/
     .menu-holder{
         text-align: center;
@@ -307,9 +387,9 @@ nav ul li{
         white-space: normal;
         float: left;
     }
-    .board-section .details{
-        height: 90vh;
-        padding-top: 10vh;
+    .board-section .details {
+        height: 85vh;
+        padding-top: 15vh;
     }
     .board-section .gallery{
         height: 100vh;
@@ -336,8 +416,8 @@ nav ul li{
         font-family: 'Fei', Georgia, serif;
     }
     .board-section .person-intro{
-        max-height: 89vh;
-        overflow-y: scroll;
+        max-height: 78vh;
+        overflow-y: auto;
     }
     .board-section .person-intro h3{
         font-family: 'NationalLight', Arial, sans-serif;
@@ -385,13 +465,6 @@ nav ul li{
     .gallery h2{
         margin-top: 15vh;
     }
-    .board-section .details{
-        height: 85vh;
-        padding-top: 15vh;
-    }
-    .board-section .person-intro{
-        max-height: 84vh;
-    }
     .board-section .title-position h3{
         font-size: 26px;
         letter-spacing: 0.5px;
@@ -415,6 +488,10 @@ nav ul li{
 @media (min-width: 1600px) {
     .width-calc{
         width: 1570px;
+    }
+    /*logo*/
+    .mobile-logo {
+        width: 64%;
     }
     /*menu section*/
     nav{
