@@ -106,6 +106,10 @@ ul{
 .menu-holder{
     width: calc(100vw - 30px);
 }
+.menu-holder li a{
+    text-decoration: none;
+    color: white;
+}
 .hamburger{
     width: 20px;
     height: 40px;
