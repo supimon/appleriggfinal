@@ -17,12 +17,16 @@
 body{
     margin: 0px;
     padding: 0px;
+    background-color: #f0f0ee;
 }
 ul{
     margin: 0px;
 }
 .width-calc{
     width: 290px;
+}
+.relative-div{
+    position: relative;
 }
 
 /*logo*/
@@ -31,15 +35,16 @@ ul{
     padding-bottom: 20px;
     position: fixed;
     top: 0px;
-    left: 0px;
+    left: 65px;
     width: 100%;
     z-index: 2;
     margin: 0px;
+    background-color: #f0f0ee;
 }
 .mobile-logo{
     width: 22%;
     display: block;
-    margin: 0 auto;
+    margin: 0px;
     min-width: 186px;
 }
 /*section slider dots*/
@@ -176,8 +181,268 @@ nav ul li{
     margin-bottom: 30px;
 }
 
+/*about section*/
+#mesh{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.about-holder{
+    float: left;
+}
+.about-section{
+    position: relative;
+    overflow: hidden;
+}
+.about-contents{
+    margin-bottom: 80px;
+    margin-top: 77px;
+}
+.mobile-logo{
+    width: 22%;
+    display: block;
+    margin: 0 auto;
+    min-width: 186px;
+}
+.about-contents .cool-line {
+    margin: 32px 20px 20px 20px;
+}
+.about-contents h2{
+    transform: translateY(100%);
+    opacity: 0;
+    font-family: 'NationalLight', Arial, sans-serif;
+    color: #005d3d;
+    letter-spacing: .5px;
+    font-size: 26px;
+    line-height: 33px;
+}
+.about-contents > p {
+    font-family: 'NationalLight', Arial, sans-serif;
+    font-size: 18px;
+    position: relative;
+    letter-spacing: 0.2px;
+    line-height: 25px;
+    transform: translateY(100%);
+    opacity: 0;
+}
+.about-contents > h2,
+.about-contents > p,
+.about-title > *,
+.testimonails h2,
+.testimonails .slide-indicator-ul {
+    margin: 20px;
+}
+.about-title{
+    opacity: 0;
+    transform: translateY(100%);
+    text-align: center;
+}
+.about-title img{
+    width: 14%;
+    margin-top: 24px;
+    max-width: 77px;
+}
+.testimonails{
+    color: grey;
+    margin-bottom: 40px;
+}
+.testimonails h2 {
+    font-size: 42px;
+    line-height: 13px;
+    color: #005d3d;
+    font-family: 'Fei', Georgia, serif;
+    margin: 22px 20px 0px 20px;
+}
+.testimonails p {
+    font-size: 14px;
+    line-height: 23px;
+    font-family: 'Fei', Georgia, serif;
+}
+.testimonails .author{
+    font-size: 19px;
+}
+.testimonails small{
+    color: #005d3d;
+    font-family: 'NationalLight', Arial, sans-serif;
+}
+.slide-indicator-ul{
+    padding: 0px;
+}
+.slide-indicator-ul li{
+    display: inline-block;
+    margin: 0px;
+    padding: 0px;
+    width: 30px;
+    height: 7px;
+    position: relative;
+}
+.slide-indicator-ul li:before{
+    content: " ";
+    position: absolute;
+    top: 10px;
+    left: 16px;
+    width: 30px;
+    height: 1px;
+    background-color: grey;
+}
+.slide-indicator-ul li:last-child:before{
+    width: 0px;
+}
+.slide-indicator-ul li a{
+    display: inline-block;
+    width: 7px;
+    border-radius: 4px;
+    height: 100%;
+    background-color: grey;
+}
+.slide-indicator-ul li.is-active a{
+    background-color: #005d3d;
+}
+
+/*company section*/
+.company-section{
+    width: auto;
+    white-space: normal;
+}
+.company-title{
+    text-align: center;
+    font-family: 'NationalLight', Arial, sans-serif;
+    color: #005d3d;
+}
+.company-title h2{
+    font-size: 30px;
+    margin-top: 0px;
+}
+.company-details-item{
+    padding: 0px 20px 0px 65px;
+    position: relative;
+    height: 100vh;
+}
+.company-details-item h3{
+    font-family: 'NationalBook', Arial, sans-serif;
+    color: #9098a0;
+    font-size: 26px;
+}
+.company-details-item h3.thinner{
+    font-family: 'NationalLight', Arial, sans-serif;
+    color: #404040;
+}
+.company-details-item p {
+    font-family: 'NationalLight', Arial, sans-serif;
+    font-size: 18px;
+    color: #9098a0;
+    position: relative;
+    letter-spacing: 0.2px;
+    line-height: 25px;
+}
+.company-details-item a{
+    font-family: 'NationalLight', Arial, sans-serif;
+    text-decoration: none;
+    color: #9098a0;
+    font-size: 14px;
+}
+.company-details-item .cool-line{
+    width: 20px;
+    background-color: #c5c9cd;
+    display: inline-block;
+    height: 1px;
+}
+.company-details-item .detailed{
+    max-width: 250px;
+    display: inline-block;
+}
+.company-details-item .logo-wrapper{
+    width: 262px;
+    display: inline-block;
+    margin-top: 30px;
+    margin-bottom: 48px;
+}
+.company-details-item img{
+    display: block;
+    width: 80%;
+}
+.company-details-item .img-70{
+    width: 70%;
+}
+.company-details-item .img-65{
+    width: 65%;
+}
+.company-details-item .img-55{
+    width: 55%;
+}
+
+/*board section*/
+.board-section{
+    background-color: #f0f0ee;
+}
+.gallery{
+    padding-top: 10vh;
+    margin-right: 20px;
+}
+.details {
+    padding-top: 3vh;
+    margin-right: 40px;
+}
+.gallery > *,
+.details > *{
+    margin-left: 65px;
+}
+.gallery .line{
+    width: 6%;
+    background-color: #005d3d;
+    height: 1px;
+    margin-bottom: 3vh;
+}
+.gallery h2{
+    font-family: 'NationalLight', Arial, sans-serif;
+    color: #404040;
+    font-size: 22px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+.gallery .mobile-img{
+    width: 230px;
+    margin-top: 80px;
+}
+.board-section .title-position h3{
+    font-family: 'NationalBook', Arial, sans-serif;
+    color: #005d3d;
+    font-size: 22px;
+    margin-bottom: 18px;
+    margin-top: 0px;
+}
+.board-section .title-position p{
+    font-size: 18px;
+    line-height: 24px;
+    font-family: 'NationalLight', Arial, sans-serif;
+    margin-top: 8px;
+    margin-bottom: 0px;
+    margin-right: 40px;
+}
+.board-section .person-intro h3{
+    font-family: 'NationalLight', Arial, sans-serif;
+    color: #005d3d;
+    font-size: 24px;
+    margin-top: 0px;
+}
+.board-section .person-intro p{
+    font-family: 'NationalLight', Arial, sans-serif;
+    font-size: 16px;
+    color: #404040;
+    position: relative;
+    letter-spacing: 0.2px;
+    line-height: 23px;
+}
+.img-gallery{
+    display: none;
+    position: absolute;
+}
 
 /*animation classes*/
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
 .collapse-line{
     -webkit-animation-name: collapseLine;
     animation-name: collapseLine;
@@ -187,6 +452,17 @@ nav ul li{
     animation-timing-function: linear;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
+}
+.fadeInUp {
+    animation-name: fadeInUp;
+}
+.about-title.fadeInUp,
+.about-contents h2.fadeInUp,
+.about-contents p.fadeInUp{
+    -webkit-animation-delay: 2.5s;
+    animation-delay: 2.5s;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
 }
 
 /*keyframe animations*/
@@ -225,6 +501,18 @@ nav ul li{
     }
 }
 
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
 /*media queries*/
 @media (min-width: 579px) {
     .width-calc{
@@ -245,6 +533,10 @@ nav ul li{
     }
 }
 @media (min-width: 768px) {
+
+    .mobile-logo-holder {
+        left: 130px;
+    }
     .width-calc{
         width: 730px;
     }
@@ -277,6 +569,35 @@ nav ul li{
         transform: translate3d(-6px, -6px, 0) rotate(45deg) scale(0.7, 1);
     }
 
+    /*board section*/
+    .gallery > *,
+    .details > *{
+        margin-left: 130px;
+    }
+    .gallery .line{
+        width: 4%;
+    }
+    .gallery h2 {
+        font-size: 25px;
+    }
+    .board-section .title-position h3 {
+        font-size: 25px;
+    }
+    .board-section .title-position p {
+        font-size: 20px;
+        line-height: 26px;
+    }
+    .board-section .person-intro h3 {
+        font-size: 26px;
+    }
+    .details {
+        margin-right: 12vw;
+    }
+    .board-section .person-intro p {
+        font-size: 19px;
+        line-height: 28px;
+    }
+
     /*animations*/
     @-webkit-keyframes collapseLine {
         0% {
@@ -286,13 +607,13 @@ nav ul li{
             width: 23%;
         }
         30% {
-            width: 4%;
+            width: 10%;
         }
         50% {
-            width: 2%;
+            width: 8%;
         }
         100% {
-            width: 3%;
+            width: 9%;
         }
     }
     @keyframes collapseLine {
@@ -303,19 +624,28 @@ nav ul li{
             width: 23%;
         }
         30% {
-            width: 4%;
+            width: 10%;
         }
         50% {
-            width: 2%;
+            width: 8%;
         }
         100% {
-            width: 3%;
+            width: 9%;
         }
     }
 }
 @media (min-width: 992px) {
+    body{
+        background-color: transparent;
+    }
     .width-calc{
         width: 960px;
+    }
+    .line{
+        display: none;
+    }
+    .only-mobile{
+        display: none;
     }
     /*logo*/
     .mobile-logo-holder {
@@ -323,6 +653,9 @@ nav ul li{
         right: 37px;
         width: 20%;
         background-color: transparent;
+    }
+    .mobile-logo{
+        margin: 0 auto;
     }
     .section-slider {
         display: inline-block;
@@ -377,9 +710,142 @@ nav ul li{
         height: 100vh;
         display: inline-block;
     }
+
+    /*about section*/
+    .about-section{
+        width: 80vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .about-contents{
+        width: 60%;
+        order: 2;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    .about-contents .cool-line {
+        margin: 0px;
+    }
+    .about-contents h2 {
+        font-size: 24px;
+        line-height: 36px;
+        margin-top: 35px;
+        margin-bottom: 30px;
+    }
+    .about-contents > p {
+        font-size: 17px;
+        line-height: 23px;
+    }
+    .about-contents > h2,
+    .about-contents > p{
+        margin-right: 19%;
+        margin-left: 0px;
+    }
+    .about-title{
+        width: 40%;
+        order: 1;
+        text-align: left;
+    }
+    .about-title img{
+        width: 22%;
+        margin-top: 34px;
+    }
+    .testimonails{
+        margin-bottom: 0px;
+    }
+    .about-title > *,
+    .testimonails h2,
+    .testimonails .slide-indicator-ul {
+        margin-left: 28%;
+        margin-right: 14%;
+    }
+    .slide-indicator-ul li:before {
+        left: 7px;
+    }
+    .testimonails p {
+        font-size: 13px;
+        line-height: 22px;
+    }
+    .testimonails h2 {
+        font-size: 40px;
+        line-height: 20px;
+    }
+    .testimonails .author {
+        font-size: 16px;
+    }
+
+    /*company section*/
+    .company-section{
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        float: left;
+    }
+    .company-title{
+        width: 20vw;
+        height: 68vh;
+    }
+    .company-title h2{
+        margin-top: 25px;
+    }
+    .company-details-item{
+        height: 76vh;
+        border-left: 2px solid #c5c9cd;
+        width: 262px;
+        padding: 0px 58px;
+        text-align: left;
+    }
+    .company-details-item p {
+        font-size: 16px;
+        line-height: 22px;
+    }
+    .company-details-item .detailed{
+        margin-top: 22vh;
+        max-width: none;
+        display: block;
+    }
+    .company-details-item .detailed.lift-company h3,
+    .company-details-item .detailed.lift-company a{
+        color: #005d3d;
+    }
+    .company-details-item .detailed.lift-company p{
+        color: #404040;
+    }
+    .company-details-item .logo-wrapper{
+        position: absolute;
+        top: auto;
+        left: 0px;
+        width: 100%;
+        bottom: 25px;
+        padding: 0px;
+        display: block;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        text-align: left;
+    }
+    .logo-wrapper.yealand{
+        bottom: 13px;
+    }
+    .company-details-item img {
+        margin: 0 auto;
+    }
+    .company-details-item .img-70 {
+        width: 58%;
+    }
+    .company-details-item .img-55 {
+        width: 41%;
+    }
+    .company-details-item .img-65 {
+        width: 53%;
+    }
+
     /*our boards section*/
     .board-section{
         width: 100vw;
+        position: relative;
     }
     .board-section .gallery, .board-section .details{
         width: 50%;
@@ -390,30 +856,38 @@ nav ul li{
     .board-section .details {
         height: 85vh;
         padding-top: 15vh;
+        margin-right: 0px;
     }
     .board-section .gallery{
-        height: 100vh;
+        height: 85vh;
+        padding-top: 15vh;
+        margin-right: 0px;
     }
     .gallery > *{
         margin-left: 11vw;
         margin-right: 3vw;
     }
     .gallery h2{
-        font-family: 'NationalLight', Arial, sans-serif;
+        font-size: 34px;
         color: #005d3d;
-        font-size: 30px;
-        margin-top: 10vh;
+        margin-top: 0px;
+        margin-bottom: 25px;
+    }
+    .gallery .mobile-img{
+        display: none;
     }
     .board-section .title-position h3{
-        font-family: 'NationalBook', Arial, sans-serif;
-        color: #005d3d;
         font-size: 24px;
         margin-bottom: 0px;
+        margin-top: 26px;
     }
     .board-section .title-position p{
         font-size: 13px;
         line-height: 15px;
         font-family: 'Fei', Georgia, serif;
+        margin-bottom: 18px;
+        margin-top: 18px;
+        margin-right: 0px;
     }
     .board-section .person-intro{
         max-height: 78vh;
@@ -437,7 +911,186 @@ nav ul li{
         margin-left: 30px;
         margin-right: 40px;
     }
+    .img-gallery{
+        display: inline-block;
+        position: absolute;
+        top: 53vh;
+        width: 326px;
+    }
+    .img-gallery .item{
+        width: 30%;
+        float: left;
+        margin-right: 12px;
+        margin-bottom: 12px;
+    }
+    .img-gallery .item:nth-child(3n){
+        margin-right: 0px;
+    }
+    .img-gallery .img-reel{
+        display: none;
+        overflow-y: auto;
+        top: 0px;
+        position: absolute;
+    }
+    .img-gallery .img-reel .item{
+        margin-right: 0px;
+        width: 100%;
+        float: none;
+        margin-bottom: 8px;
+    }
+    .img-gallery .img-reel .item:last-child{
+        margin-bottom: 0px;
+    }
 
+    /*animation classes*/
+    .lift-company{
+        -webkit-animation-name: liftCompany;
+        animation-name: liftCompany;
+        -webkit-animation-duration: .5s;
+        animation-duration: .5s;
+        -webkit-animation-timing-function: linear;
+        animation-timing-function: linear;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+    }
+    .dip-company{
+        -webkit-animation-name: dipCompany;
+        animation-name: dipCompany;
+        -webkit-animation-duration: .5s;
+        animation-duration: .5s;
+        -webkit-animation-timing-function: ease;
+        animation-timing-function: ease;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+    }
+    .sink-line{
+        -webkit-animation-name: sinkLine;
+        animation-name: sinkLine;
+        -webkit-animation-duration: .5s;
+        animation-duration: .5s;
+        -webkit-animation-delay: .1s;
+        animation-delay: .1s;
+        -webkit-animation-timing-function: ease;
+        animation-timing-function: ease;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+    }
+    .raise-line{
+        -webkit-animation-name: raiseLine;
+        animation-name: raiseLine;
+        -webkit-animation-duration: .5s;
+        animation-duration: .5s;
+        -webkit-animation-timing-function: ease;
+        animation-timing-function: ease;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+    }
+
+    /*animations*/
+    @-webkit-keyframes collapseLine {
+        0% {
+            width: 100%;
+        }
+        25% {
+            width: 23%;
+        }
+        30% {
+            width: 4%;
+        }
+        50% {
+            width: 2%;
+        }
+        100% {
+            width: 3%;
+        }
+    }
+    @keyframes collapseLine {
+        0% {
+            width: 100%;
+        }
+        25% {
+            width: 23%;
+        }
+        30% {
+            width: 4%;
+        }
+        50% {
+            width: 2%;
+        }
+        100% {
+            width: 3%;
+        }
+    }
+
+    @-webkit-keyframes liftCompany {
+        0% {
+            margin-top: 100%;
+        }
+        20% {
+            margin-top: 105%;
+        }
+        40% {
+            margin-top: 100%;
+        }
+        60% {
+            margin-top: 55%;
+        }
+        80% {
+            margin-top: 30%;
+        }
+        100% {
+            margin-top: 25%;
+        }
+    }
+    @keyframes liftCompany {
+        0% {
+            margin-top: 100%;
+        }
+        20% {
+            margin-top: 105%;
+        }
+        40% {
+            margin-top: 100%;
+        }
+        60% {
+            margin-top: 55%;
+        }
+        80% {
+            margin-top: 30%;
+        }
+        100% {
+            margin-top: 25%;
+        }
+    }
+
+    @-webkit-keyframes dipCompany {
+        from {margin-top: 25%;}
+        to {margin-top: 100%;}
+    }
+    @keyframes dipCompany {
+        from {margin-top: 25%;}
+        to {margin-top: 100%;}
+    }
+
+    @-webkit-keyframes sinkLine {
+        0% { transform: translateY(0px); width: 20px; }
+        50% { transform: translateY(6px); width: 0px; background-color: #005d3d;}
+        100% { transform: translateY(12px); width: 20px; background-color: #005d3d;}
+    }
+    @keyframes sinkLine {
+        0% { transform: translateY(0px); width: 20px; }
+        50% { transform: translateY(6px); width: 0px; background-color: #005d3d;}
+        100% { transform: translateY(12px); width: 20px; background-color: #005d3d;}
+    }
+
+    @-webkit-keyframes raiseLine {
+        from { transform: translateY(12px) }
+        to { transform: translateY(0px) }
+    }
+    @keyframes raiseLine {
+        from { transform: translateY(12px) }
+        to { transform: translateY(0px) }
+    }
 }
 @media (min-width: 1200px) {
     .width-calc{
@@ -458,12 +1111,58 @@ nav ul li{
         margin: 0px 9.7%;
     }
 
+    /*about section*/
+    .about-contents h2 {
+        font-size: 30px;
+        line-height: 42px;
+    }
+    .about-contents > p {
+        font-size: 18px;
+        line-height: 26px;
+    }
+    .about-title > *,
+    .testimonails h2,
+    .testimonails .slide-indicator-ul {
+        margin-left: 33%;
+        margin-right: 19%;
+    }
+    .testimonails p {
+        font-size: 14px;
+        line-height: 23px;
+    }
+    .testimonails h2 {
+        font-size: 41px;
+        line-height: 30px;
+    }
+    .board .details > *{
+        margin-left: 4%;
+        margin-right: 12%;
+    }
+
+    /*company section*/
+    .company-details-item {
+        width: 340px;
+    }
+    .company-details-item .detailed {
+        margin-top: 26vh;
+    }
+    .company-details-item p {
+        font-size: 18px;
+        line-height: 25px;
+    }
+    .company-details-item .img-70 {
+        width: 58%;
+    }
+    .company-details-item .img-55 {
+        width: 41%;
+    }
+    .company-details-item .img-65 {
+        width: 53%;
+    }
+
     /*our boards section*/
     .gallery > * {
         margin-left: 140px;
-    }
-    .gallery h2{
-        margin-top: 15vh;
     }
     .board-section .title-position h3{
         font-size: 26px;
@@ -506,6 +1205,52 @@ nav ul li{
     }
     nav ul li{
         margin: 0px 8.5%;
+    }
+
+    /*about section*/
+    .about-contents h2{
+        font-size: 34px;
+        line-height: 51px;
+    }
+    .about-contents > p {
+        font-size: 20px;
+        line-height: 28px;
+    }
+    .about-title > *,
+    .testimonails h2,
+    .testimonails .slide-indicator-ul {
+        margin-left: 39%;
+    }
+    .testimonails p {
+        font-size: 16px;
+        line-height: 27px;
+    }
+    .testimonails h2 {
+        font-size: 54px;
+    }
+    .testimonails .author {
+        font-size: 20px;
+    }
+    .board .details > *{
+        margin-left: 10%;
+        margin-right: 22%;
+    }
+
+    /*company section*/
+    .company-details-item {
+        width: 262px;
+    }
+    .company-details-item .detailed {
+        margin-top: 27vh;
+    }
+    .company-details-item .img-70 {
+        width: 70%;
+    }
+    .company-details-item .img-55 {
+        width: 55%;
+    }
+    .company-details-item .img-65 {
+        width: 65%;
     }
 
     /*board section*/

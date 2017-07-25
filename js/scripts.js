@@ -64,4 +64,31 @@
         }
     }
 
+    $('.img-gallery .img-reel').css({
+        'max-height': 'calc('+$('.img-gallery').height()+'px - '+$($('.img-gallery .item')[0]).css('margin-bottom')+')',
+        'width' : $($('.img-gallery .item')[0]).width()+'px',
+        'left': $($('.img-gallery .item')[2]).position().left+'px'
+    });
+
+    $('.img-gallery .item').each(function(i){
+        $(this).click(function(){
+            $(this).css({
+                'transform': 'translateX(-'+$(this).position().left+'px) scale(2.12, 2.12)',
+                'transform-origin': i <= 2 ? 'top left' : 'bottom left'
+            })
+        });
+    });
+    // company lift animation
+    $('.company-details-item').on('mouseover', function(){
+        $(this).children(".detailed").removeClass('dip-company').addClass('lift-company').end()
+            .children(".cool-line").removeClass("raise-line").addClass("sink-line");
+    }).on('mouseout', function(){
+        $(this).children(".detailed").removeClass('lift-company').addClass('dip-company').end()
+            .children(".cool-line").removeClass("sink-line").addClass("raise-line");;
+    });
+
+        /*$(this).css({
+            'transform': 'translateX(-'+$(this).position().left+'px) scale(2.12, 2.12)',
+            'transform-origin': '0px 0px'
+        });*/
 })();
