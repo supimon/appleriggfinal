@@ -35,7 +35,7 @@ ul{
     padding-bottom: 20px;
     position: fixed;
     top: 0px;
-    left: 65px;
+    left: 0px;
     width: 100%;
     z-index: 2;
     margin: 0px;
@@ -44,12 +44,13 @@ ul{
 .mobile-logo{
     width: 22%;
     display: block;
-    margin: 0px;
+    margin: 0px 0px 0px 65px;
     min-width: 186px;
 }
 /*section slider dots*/
 .section-slider {
     display: none;
+    z-index: 2;
 }
 .slide-indicator-ul {
     padding: 0px;
@@ -165,7 +166,7 @@ nav ul{
 nav ul li{
     margin-bottom: 24px;
 }
-.menu-holder address{
+address{
     text-align: left;
     font-family: 'NationalLight', Arial, sans-serif;
     font-size: 14px;
@@ -182,30 +183,31 @@ nav ul li{
 }
 
 /*about section*/
-#mesh{
-    width: 100%;
+#mesh, #mesh-footer{
+    width: 1600px;
     height: 100%;
     position: absolute;
 }
 .about-holder{
-    float: left;
+    white-space: normal;
 }
 .about-section{
     position: relative;
     overflow: hidden;
 }
+.about-section > * {
+    margin-left: 65px;
+}
 .about-contents{
     margin-bottom: 80px;
     margin-top: 77px;
-}
-.mobile-logo{
-    width: 22%;
-    display: block;
-    margin: 0 auto;
-    min-width: 186px;
+    overflow: hidden;
 }
 .about-contents .cool-line {
-    margin: 32px 20px 20px 20px;
+    margin: 32px 20px 20px 0px;
+    width: 20px;
+    background-color: #005d3d;
+    height: 1px;
 }
 .about-contents h2{
     transform: translateY(100%);
@@ -228,14 +230,12 @@ nav ul li{
 .about-contents > h2,
 .about-contents > p,
 .about-title > *,
-.testimonails h2,
 .testimonails .slide-indicator-ul {
-    margin: 20px;
+    margin: 20px 40px 20px 0px;
 }
 .about-title{
     opacity: 0;
     transform: translateY(100%);
-    text-align: center;
 }
 .about-title img{
     width: 14%;
@@ -251,7 +251,7 @@ nav ul li{
     line-height: 13px;
     color: #005d3d;
     font-family: 'Fei', Georgia, serif;
-    margin: 22px 20px 0px 20px;
+    margin: 22px 20px 0px 0px;
 }
 .testimonails p {
     font-size: 14px;
@@ -265,49 +265,23 @@ nav ul li{
     color: #005d3d;
     font-family: 'NationalLight', Arial, sans-serif;
 }
-.slide-indicator-ul{
-    padding: 0px;
-}
-.slide-indicator-ul li{
-    display: inline-block;
-    margin: 0px;
-    padding: 0px;
-    width: 30px;
-    height: 7px;
-    position: relative;
-}
-.slide-indicator-ul li:before{
-    content: " ";
-    position: absolute;
-    top: 10px;
-    left: 16px;
-    width: 30px;
-    height: 1px;
-    background-color: grey;
-}
-.slide-indicator-ul li:last-child:before{
-    width: 0px;
-}
-.slide-indicator-ul li a{
-    display: inline-block;
-    width: 7px;
-    border-radius: 4px;
-    height: 100%;
-    background-color: grey;
-}
-.slide-indicator-ul li.is-active a{
-    background-color: #005d3d;
+.about-section .slide-indicator-ul li:before{
+    left: 6px;
 }
 
 /*company section*/
+.company-holder{
+
+}
 .company-section{
     width: auto;
     white-space: normal;
 }
 .company-title{
-    text-align: center;
+    text-align: left;
     font-family: 'NationalLight', Arial, sans-serif;
     color: #005d3d;
+    margin-left: 65px;
 }
 .company-title h2{
     font-size: 30px;
@@ -316,7 +290,6 @@ nav ul li{
 .company-details-item{
     padding: 0px 20px 0px 65px;
     position: relative;
-    height: 100vh;
 }
 .company-details-item h3{
     font-family: 'NationalBook', Arial, sans-serif;
@@ -373,7 +346,7 @@ nav ul li{
 
 /*board section*/
 .board-section{
-    background-color: #f0f0ee;
+    white-space: normal;
 }
 .gallery{
     padding-top: 10vh;
@@ -436,6 +409,25 @@ nav ul li{
 .img-gallery{
     display: none;
     position: absolute;
+}
+/*footer section*/
+footer > *{
+    margin-left: 65px;
+    margin-right: 7vw;
+}
+footer address{
+    color: #005d3d;
+    margin-top: 8vh;
+    font-size: 20px;
+    line-height: 30px;
+    font-family: 'NationalBook', Arial, sans-serif;
+}
+footer img{
+    display: block;
+    width: 25%;
+    margin-left: 65px;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
 }
 
 /*animation classes*/
@@ -537,6 +529,9 @@ nav ul li{
     .mobile-logo-holder {
         left: 130px;
     }
+    .mobile-logo {
+        margin: 0px 0px 0px 0px;
+    }
     .width-calc{
         width: 730px;
     }
@@ -569,6 +564,19 @@ nav ul li{
         transform: translate3d(-6px, -6px, 0) rotate(45deg) scale(0.7, 1);
     }
 
+    /*about section*/
+    .about-section > * {
+        margin-left: 130px;
+    }
+
+    /*company section*/
+    .company-title {
+        margin-left: 130px;
+    }
+    .company-details-item {
+        padding: 0px 20px 0px 130px;
+    }
+
     /*board section*/
     .gallery > *,
     .details > *{
@@ -596,6 +604,14 @@ nav ul li{
     .board-section .person-intro p {
         font-size: 19px;
         line-height: 28px;
+    }
+    /*footer section*/
+    footer > * {
+        margin-left: 130px;
+    }
+    footer img {
+        margin-left: 130px;
+        width: 13%;
     }
 
     /*animations*/
@@ -645,7 +661,7 @@ nav ul li{
         display: none;
     }
     .only-mobile{
-        display: none;
+        display: none !important;
     }
     /*logo*/
     .mobile-logo-holder {
@@ -712,12 +728,18 @@ nav ul li{
     }
 
     /*about section*/
+    .about-holder{
+        float: left;
+    }
     .about-section{
-        width: 80vw;
+        width: 77vw;
         height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+    .about-section > * {
+        margin-left: 0px;
     }
     .about-contents{
         width: 60%;
@@ -761,7 +783,7 @@ nav ul li{
         margin-left: 28%;
         margin-right: 14%;
     }
-    .slide-indicator-ul li:before {
+    .about-section .slide-indicator-ul li:before {
         left: 7px;
     }
     .testimonails p {
@@ -785,11 +807,14 @@ nav ul li{
         float: left;
     }
     .company-title{
-        width: 20vw;
-        height: 68vh;
+        text-align: center;
+        width: 23vw;
+        height: 100vh;
+        float: left;
+        margin-left: 0px;
     }
     .company-title h2{
-        margin-top: 25px;
+        margin-top: 15vh;
     }
     .company-details-item{
         height: 76vh;
@@ -844,8 +869,15 @@ nav ul li{
 
     /*our boards section*/
     .board-section{
-        width: 100vw;
+        width: 125vw;
         position: relative;
+        overflow: hidden;
+    }
+    .board-holder{
+        display: inline-block;
+        float: left;
+        width: 100vw;
+        background-color: #f0f0ee;
     }
     .board-section .gallery, .board-section .details{
         width: 50%;
@@ -941,6 +973,27 @@ nav ul li{
     .img-gallery .img-reel .item:last-child{
         margin-bottom: 0px;
     }
+    /*footer section*/
+    footer > *{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    footer{
+        max-width: 25vw;
+        height: 100vh;
+        float: left;
+    }
+    footer address{
+        font-size: 17px;
+        line-height: 25px;
+        margin: 20vh 50px;
+        letter-spacing: 0px;
+        font-family: 'NationalLight', Arial, sans-serif;
+    }
+    footer img{
+        width: 31%;
+        margin: 16vh 50px 20px 50px;
+    }
 
     /*animation classes*/
     .lift-company{
@@ -1024,52 +1077,52 @@ nav ul li{
 
     @-webkit-keyframes liftCompany {
         0% {
-            margin-top: 100%;
+            margin-top: 26vh;
         }
         20% {
-            margin-top: 105%;
+            margin-top: 27vh;
         }
         40% {
-            margin-top: 100%;
+            margin-top: 26vh;
         }
         60% {
-            margin-top: 55%;
+            margin-top: 7vh;
         }
         80% {
-            margin-top: 30%;
+            margin-top: 6vh;
         }
         100% {
-            margin-top: 25%;
+            margin-top: 5vh;
         }
     }
     @keyframes liftCompany {
         0% {
-            margin-top: 100%;
+            margin-top: 26vh;
         }
         20% {
-            margin-top: 105%;
+            margin-top: 27vh;
         }
         40% {
-            margin-top: 100%;
+            margin-top: 26vh;
         }
         60% {
-            margin-top: 55%;
+            margin-top: 7vh;
         }
         80% {
-            margin-top: 30%;
+            margin-top: 6vh;
         }
         100% {
-            margin-top: 25%;
+            margin-top: 5vh;
         }
     }
 
     @-webkit-keyframes dipCompany {
-        from {margin-top: 25%;}
-        to {margin-top: 100%;}
+        from {margin-top: 5vh;}
+        to {margin-top: 26vh;}
     }
     @keyframes dipCompany {
-        from {margin-top: 25%;}
-        to {margin-top: 100%;}
+        from {margin-top: 5vh;}
+        to {margin-top: 26vh;}
     }
 
     @-webkit-keyframes sinkLine {
@@ -1112,6 +1165,9 @@ nav ul li{
     }
 
     /*about section*/
+    .about-section{
+        width: 80vw;
+    }
     .about-contents h2 {
         font-size: 30px;
         line-height: 42px;
@@ -1140,6 +1196,12 @@ nav ul li{
     }
 
     /*company section*/
+    .company-title{
+        width: 20vw;
+    }
+    .company-title h2{
+        font-size: 34px;
+    }
     .company-details-item {
         width: 340px;
     }
@@ -1254,6 +1316,12 @@ nav ul li{
     }
 
     /*board section*/
+    .board-section{
+        width: 100vw;
+    }
+    .board-holder{
+        width: 80vw;
+    }
     .board-section .title-position p{
         font-size: 15px;
     }
@@ -1264,6 +1332,15 @@ nav ul li{
     .board-section .details > * {
         margin-left: 10%;
         margin-right: 22%;
+    }
+    /*footer section*/
+    footer{
+        width: 20vw;
+    }
+}
+@media (max-width: 991px) {
+    #mesh-footer, #mesh{
+        display: none;
     }
 }
 
