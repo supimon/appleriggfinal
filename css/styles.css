@@ -103,6 +103,9 @@ ul{
     position: fixed;
     z-index: 5;
 }
+.menu-area.initial-pos{
+    transform: translateX(0px);
+}
 .menu-holder{
     width: calc(100vw - 30px);
 }
@@ -184,6 +187,9 @@ address{
     background-color: white;
     height: 1px;
     margin-bottom: 30px;
+}
+.menu-area.initial-pos .cool-line{
+    width: 100%;
 }
 
 /*about section*/

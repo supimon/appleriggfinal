@@ -1,13 +1,25 @@
 (function() {
     var menuDivEasing, hamburgerTimer, currWidth = getCurrWidth(),
         menuAreaLeftPos = {
-            "pos" : $('.menu-area').position().left
+            "pos" : getMenuLeftPos()
         },
         leftPos = {
             '#aboutApplerigg': $('#aboutApplerigg').offset().left,
             '#ourCompanies' : $('#ourCompanies').offset().left,
             '#ourBoard' : $('#ourBoard').offset().left
         };
+    // preloader animations
+    $('.menu-area .cool-line').addClass('collapse-line');
+    menuDivEasing = anime({
+        targets: '.menu-area',
+        translateX: [0, menuAreaLeftPos.pos],
+        delay: 2000,
+        easing: 'easeInOutQuart',
+        complete: function(){
+            $('.menu-area').removeClass('initial-pos');
+            $('.menu-area .cool-line').removeClass('collapse-line');
+        }
+    });
     // menu swipe animation
     $('.hamburger').on('click', function(){
         if($('.hamburger').hasClass('open')){
@@ -18,7 +30,7 @@
                 easing: 'easeInOutQuart',
                 complete: function(){
                     $('.hamburger').removeClass('open');
-                    $('.cool-line').removeClass('collapse-line');
+                    $('.menu-area .cool-line').removeClass('collapse-line');
                 }
             });
         }
@@ -28,7 +40,7 @@
                 translateX: [menuAreaLeftPos.pos, 0],
                 easing: 'easeInOutQuart',
                 complete: function(){
-                    $('.cool-line').addClass('collapse-line');
+                    $('.menu-area .cool-line').addClass('collapse-line');
                     $('.hamburger').addClass('open');
                     hamburgerTimer = setInterval(function () {
                         var arrowTimeline = anime.timeline();
@@ -58,21 +70,9 @@
                 easing: "easein"
             }, 200, function(){
                 currWidth = getCurrWidth();
-                switch(currWidth){
-                    case "xxl":
-                    case "lg":
-                    case "md":
-                    case "sm":
-                        menuAreaLeftPos = {
-                            "pos" : 50 - $(window).width()
-                        };
-                        break;
-                    default:
-                        menuAreaLeftPos = {
-                            "pos" : 30 - $(window).width()
-                        };
-                        break;
-                }
+                menuAreaLeftPos = {
+                    "pos" : getMenuLeftPos()
+                };
                 clearInterval(hamburgerTimer);
                 menuDivEasing = anime({
                     targets: '.menu-area',
@@ -106,6 +106,18 @@
                 return 'xs';
             default:
                 return 'xxs';
+        }
+    }
+    // utility to get menu left position
+    function getMenuLeftPos(){
+        switch(currWidth){
+            case "xxl":
+            case "lg":
+            case "md":
+            case "sm":
+                return 50 - $(window).width();
+            default:
+                return 30 - $(window).width();
         }
     }
     // company lift animation
