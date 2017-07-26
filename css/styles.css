@@ -420,6 +420,12 @@ address{
     display: none;
     position: absolute;
 }
+.img-gallery .relative-div:after {
+    content: " ";
+    display: block;
+    height: 0;
+    clear: both;
+}
 /*footer section*/
 footer > *{
     margin-left: 65px;
@@ -959,22 +965,29 @@ footer img{
         top: 53vh;
         width: 326px;
     }
-    .img-gallery .item{
+    .img-gallery > .item{
         width: 30%;
         float: left;
         margin-right: 12px;
         margin-bottom: 12px;
     }
-    .img-gallery .item:nth-child(3n){
+    .img-gallery > .item:nth-child(3n){
         margin-right: 0px;
     }
     .img-gallery .img-reel{
-        display: none;
+        display: block;
         overflow-y: auto;
         top: 0px;
+        left: 0px;
         position: absolute;
+        width: 100%;
+        height: 100%;
     }
-    .img-gallery .img-reel .item{
+    .img-gallery .img-reel .relative-div{
+        width: 100%;
+        height: 100%;
+    }
+    /*.img-gallery .img-reel .item{
         margin-right: 0px;
         width: 100%;
         float: none;
@@ -982,7 +995,8 @@ footer img{
     }
     .img-gallery .img-reel .item:last-child{
         margin-bottom: 0px;
-    }
+    }*/
+
     /*footer section*/
     footer > *{
         margin-left: 0px;

@@ -161,8 +161,11 @@
             }
         }, 250));
     });
+
+    $()
+
     // image gallery experiments
-    $('.img-gallery .img-reel').css({
+    /*$('.img-gallery .img-reel').css({
         'max-height': 'calc('+$('.img-gallery').height()+'px - '+$($('.img-gallery .item')[0]).css('margin-bottom')+')',
         'width' : $($('.img-gallery .item')[0]).width()+'px',
         'left': $($('.img-gallery .item')[2]).position().left+'px'
@@ -174,5 +177,5 @@
                 'transform-origin': i <= 2 ? 'top left' : 'bottom left'
             })
         });
-    });
+    });*/
 })();
