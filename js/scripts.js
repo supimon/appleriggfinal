@@ -123,12 +123,18 @@ $(document).ready(function() {
         }
     }
     // company lift animation
-    $('.company-details-item').on('mouseover', function(){
+    $('.company-details-item')
+        .on('mouseover', function(){
         $(this).children(".detailed").removeClass('dip-company').addClass('lift-company').end()
-            .children(".cool-line").removeClass("raise-line").addClass("sink-line");
-    }).on('mouseout', function(){
+            .children(".cool-line").removeClass("raise-line").addClass("sink-line").end()
+            .find("img.grey").addClass('display-none').end()
+            .find("img.color").removeClass('display-none');
+    })
+        .on('mouseout', function(){
         $(this).children(".detailed").removeClass('lift-company').addClass('dip-company').end()
-            .children(".cool-line").removeClass("sink-line").addClass("raise-line");
+            .children(".cool-line").removeClass("sink-line").addClass("raise-line").end()
+            .find("img.color").addClass('display-none').end()
+            .find("img.grey").removeClass('display-none');
     });
     // scroll to the intended section
     $('.section-slider a, .menu-holder a').click(function (e) {

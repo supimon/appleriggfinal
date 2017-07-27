@@ -28,6 +28,9 @@ ul{
 .relative-div{
     position: relative;
 }
+.display-none{
+    display: none!important;
+}
 
 /*logo*/
 .mobile-logo-holder{
@@ -1247,6 +1250,7 @@ footer img{
         from { transform: translateY(12px) }
         to { transform: translateY(0px) }
     }
+
 }
 @media (min-width: 1200px) {
     .width-calc{
@@ -1348,6 +1352,14 @@ footer img{
         margin-left: 30px;
         margin-right: 17%;
     }
+
+    /*browser incompatibilities*/
+    @supports (-ms-ime-align:auto) {
+        nav ul li{
+            display: inline;
+            margin: 0px 9%;
+        }
+    }
 }
 @media (min-width: 1600px) {
     .width-calc{
@@ -1439,6 +1451,14 @@ footer img{
     /*footer section*/
     footer{
         width: 20vw;
+    }
+
+    /*browser incompatibilities*/
+    @supports (-ms-ime-align:auto) {
+        nav ul li{
+            display: inline;
+            margin: 0px 8%;
+        }
     }
 }
 @media (max-width: 991px) {
