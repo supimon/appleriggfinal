@@ -10,6 +10,11 @@ $(document).ready(function() {
         },
         currThumb = 0,
         moveY = "";
+
+    /* initial setups */
+    if(currWidth == 'xxl' || currWidth == 'lg' || currWidth == 'md')
+        $('.about-title').height($('.about-contents').height());
+
     // preloader animations
     $('.menu-area .cool-line').addClass('collapse-line');
     menuDivEasing = anime({
@@ -22,6 +27,7 @@ $(document).ready(function() {
             $('.menu-area .cool-line').removeClass('collapse-line');
         }
     });
+
     // menu swipe animation
     $('.hamburger').on('click', function(){
         if($('.hamburger').hasClass('open')){
@@ -63,6 +69,9 @@ $(document).ready(function() {
             });
         }
     });
+
+    /* manage browser resize */
+
     // recalculate initial values
     $(window).on('resize', function(){
         clearTimeout($.data(this, 'resizeTimer'));
@@ -72,6 +81,8 @@ $(document).ready(function() {
                 easing: "easein"
             }, 200, function(){
                 currWidth = getCurrWidth();
+                if(currWidth == 'xxl' || currWidth == 'lg' || currWidth == 'md')
+                    $('.about-title').height($('.about-contents').height());
                 menuAreaLeftPos = {
                     "pos" : getMenuLeftPos()
                 };
@@ -122,6 +133,7 @@ $(document).ready(function() {
                 return 30 - $(window).width();
         }
     }
+
     // company lift animation
     $('.company-details-item')
         .on('mouseover', function(){
@@ -148,6 +160,7 @@ $(document).ready(function() {
             easing: "easein"
         }, 1000);
     });
+
     // highlight slider dots based on scroll position
     $('.body-section').scroll(function() {
         clearTimeout($.data(this, 'scrollTimer'));
@@ -170,6 +183,9 @@ $(document).ready(function() {
         }, 250));
     });
 
+    /* gallery animations and resets */
+
+    // prepare clones for gallery
     $('img.original').each(function(k){
         var that = this;
         k == ($('img.original').length - 1) ?
@@ -177,18 +193,18 @@ $(document).ready(function() {
                 .removeClass('original')
                 .addClass('thumb-item')
                 .css({
-                'margin': '0px 0px 0px 0px',
-                'width': $(that).width(),
-                'height': 120.75/*$(that).height()*/
-            }):
+                    'margin': '0px 0px 0px 0px',
+                    'width': $(that).width(),
+                    'height': 120.75/*$(that).height()*/
+                }):
             $(this).clone().appendTo($('.thumb-slider-holder'))
                 .removeClass('original')
                 .addClass('thumb-item')
                 .css({
-                'margin': '0px 0px 12px 0px',
-                'width': $(that).width(),
-                'height': 120.75/*$(that).height()*/
-            });
+                    'margin': '0px 0px 12px 0px',
+                    'width': $(that).width(),
+                    'height': 120.75/*$(that).height()*/
+                });
     });
     // go into gallery detail view
     $('.img-gallery > .relative-div > .item').click(function(){
@@ -253,6 +269,7 @@ $(document).ready(function() {
             });
         });
     });
+    // gallery thumb animations
     $('.img-reel .thumb-item').click(function(){
         var that = this,
             boardMem = $(this).data('name'),
@@ -302,6 +319,7 @@ $(document).ready(function() {
             });
         });
     });
+    // animate gallery text
     function animateText(boardMem){
         var titlePos = $('.gallery.'+boardMem+' .title-position').clone().css({'display' : 'block'}),
             personIntro = $('.details.'+boardMem+' .person-intro').clone().css({'display' : 'block'});
@@ -339,13 +357,12 @@ $(document).ready(function() {
                 .empty();
         });
     });
-
-
+    // slider move actions
     $('.slider-arrow-bottom, .slider-arrow-top').one('click', function(){
         moveY = $($('.thumb-item')[currThumb+1]).offset().top - $('.img-gallery').offset().top;
         moveThumb(this);
     })
-
+    /*utility function to move thumb*/
     function moveThumb(that){
         var tempPos = '';
         if($(that).hasClass('slider-arrow-bottom')){

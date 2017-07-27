@@ -217,7 +217,7 @@ address{
     overflow: hidden;
 }
 .about-contents .cool-line {
-    margin: 32px 20px 20px 0px;
+    margin: 0px;
     width: 20px;
     background-color: #005d3d;
     height: 1px;
@@ -249,6 +249,7 @@ address{
 .about-title{
     opacity: 0;
     transform: translateY(100%);
+    position: relative;
 }
 .about-title img{
     width: 14%;
@@ -299,14 +300,16 @@ address{
 .company-title h2{
     font-size: 30px;
     margin-top: 0px;
+    color: #404040;
+    margin-bottom: 15px;
 }
 .company-details-item{
     padding: 0px 20px 0px 65px;
     position: relative;
 }
 .company-details-item h3{
-    font-family: 'NationalBook', Arial, sans-serif;
-    color: #9098a0;
+    font-family: 'NationalLight', Arial, sans-serif;
+    color: #005d3d;
     font-size: 26px;
 }
 .company-details-item h3.thinner{
@@ -316,7 +319,7 @@ address{
 .company-details-item p {
     font-family: 'NationalLight', Arial, sans-serif;
     font-size: 18px;
-    color: #9098a0;
+    color: #404040;
     position: relative;
     letter-spacing: 0.2px;
     line-height: 25px;
@@ -324,12 +327,12 @@ address{
 .company-details-item a{
     font-family: 'NationalLight', Arial, sans-serif;
     text-decoration: none;
-    color: #9098a0;
+    color: #005d3d;
     font-size: 14px;
 }
 .company-details-item .cool-line{
     width: 20px;
-    background-color: #c5c9cd;
+    background-color: #005d3d;
     display: inline-block;
     height: 1px;
 }
@@ -390,8 +393,16 @@ address{
     width: 230px;
     margin-top: 80px;
 }
+.gallery.only-mobile h2{
+    display: none;
+}
+.gallery:nth-child(3) h2{
+    display: block;
+    font-size: 30px;
+    margin-bottom: 25px;
+}
 .board-section .title-position h3{
-    font-family: 'NationalBook', Arial, sans-serif;
+    font-family: 'NationalLight', Arial, sans-serif;
     color: #005d3d;
     font-size: 22px;
     margin-bottom: 18px;
@@ -413,11 +424,11 @@ address{
 }
 .board-section .person-intro p{
     font-family: 'NationalLight', Arial, sans-serif;
-    font-size: 16px;
+    font-size: 18px;
     color: #404040;
     position: relative;
     letter-spacing: 0.2px;
-    line-height: 23px;
+    line-height: 26px;
 }
 .img-gallery{
     display: none;
@@ -804,9 +815,11 @@ footer img{
         text-align: left;
     }
     .about-title img{
-        width: 22%;
-        margin-top: 34px;
-        margin-bottom: 0px;
+        position: absolute;
+        left: 33%;
+        margin: 0px;
+        bottom: 28px;
+        top: auto;
     }
     .testimonails{
         margin-bottom: 0px;
@@ -849,6 +862,8 @@ footer img{
     }
     .company-title h2{
         margin-top: 15vh;
+        color: #005d3d;
+        margin-bottom: inherit;
     }
     .company-details-item{
         height: 76vh;
@@ -860,6 +875,16 @@ footer img{
     .company-details-item p {
         font-size: 16px;
         line-height: 22px;
+        color: #9098a0;
+    }
+    .company-details-item h3 {
+        color: #9098a0;
+    }
+    .company-details-item a{
+        color: #9098a0;
+    }
+    .company-details-item .cool-line{
+        background-color: #c5c9cd;
     }
     .company-details-item .detailed{
         margin-top: 22vh;
@@ -1091,7 +1116,7 @@ footer img{
         float: left;
     }
     footer address{
-        font-size: 17px;
+        font-size: 16px;
         line-height: 25px;
         margin: 20vh 50px;
         letter-spacing: 0px;
@@ -1277,12 +1302,12 @@ footer img{
         width: 80vw;
     }
     .about-contents h2 {
-        font-size: 30px;
-        line-height: 42px;
+        font-size: 28px;
+        line-height: 40px;
     }
     .about-contents > p {
-        font-size: 18px;
-        line-height: 26px;
+        font-size: 16px;
+        line-height: 23px;
     }
     .about-title > *,
     .testimonails h2,
@@ -1291,8 +1316,11 @@ footer img{
         margin-right: 19%;
     }
     .testimonails p {
-        font-size: 14px;
-        line-height: 23px;
+        font-size: 13px;
+        line-height: 22px;
+    }
+    .testimonails .author {
+        font-size: 18px;
     }
     .testimonails h2 {
         font-size: 41px;
@@ -1308,7 +1336,7 @@ footer img{
         width: 20vw;
     }
     .company-title h2{
-        font-size: 34px;
+        font-size: 28px;
     }
     .company-details-item {
         width: 340px;
@@ -1317,8 +1345,8 @@ footer img{
         margin-top: 26vh;
     }
     .company-details-item p {
-        font-size: 18px;
-        line-height: 25px;
+        font-size: 16px;
+        line-height: 23px;
     }
     .company-details-item .img-70 {
         width: 58%;
@@ -1334,20 +1362,23 @@ footer img{
     .gallery > * {
         margin-left: 140px;
     }
+    .gallery h2{
+        font-size: 28px;
+    }
     .board-section .title-position h3{
         font-size: 26px;
         letter-spacing: 0.5px;
     }
     .board-section .title-position p{
         font-size: 14px;
-        line-height: 16px;
+        line-height: 13px;
     }
     .board-section .person-intro h3{
         font-size: 26px;
     }
     .board-section .person-intro p{
-        font-size: 18px;
-        line-height: 25px;
+        font-size: 16px;
+        line-height: 23px;
     }
     .board-section .details > * {
         margin-left: 30px;
@@ -1387,12 +1418,15 @@ footer img{
 
     /*about section*/
     .about-contents h2{
-        font-size: 34px;
-        line-height: 51px;
+        font-size: 32px;
+        line-height: 46px;
     }
     .about-contents > p {
-        font-size: 20px;
-        line-height: 28px;
+        font-size: 18px;
+        line-height: 26px;
+    }
+    .about-title img{
+        left: 39%;
     }
     .about-title > *,
     .testimonails h2,
@@ -1400,8 +1434,8 @@ footer img{
         margin-left: 39%;
     }
     .testimonails p {
-        font-size: 16px;
-        line-height: 27px;
+        font-size: 14px;
+        line-height: 25px;
     }
     .testimonails h2 {
         font-size: 54px;
@@ -1415,6 +1449,13 @@ footer img{
     }
 
     /*company section*/
+    .company-title h2{
+        font-size: 32px;
+    }
+    .company-details-item p {
+        font-size: 18px;
+        line-height: 26px;
+    }
     .company-details-item {
         width: 262px;
     }
@@ -1442,16 +1483,23 @@ footer img{
         font-size: 15px;
     }
     .board-section .person-intro p {
-        font-size: 20px;
-        line-height: 29px;
+        font-size: 18px;
+        line-height: 26px;
     }
     .board-section .details > * {
         margin-left: 10%;
         margin-right: 22%;
     }
+    .gallery h2{
+        font-size: 32px;
+    }
     /*footer section*/
     footer{
         width: 20vw;
+    }
+    footer address {
+        font-size: 18px;
+        line-height: 28px;
     }
 
     /*browser incompatibilities*/
