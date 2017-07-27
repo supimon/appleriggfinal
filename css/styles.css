@@ -28,8 +28,12 @@ ul{
 .relative-div{
     position: relative;
 }
-.display-none{
-    display: none!important;
+.pointer-events-none{
+    pointer-events: none;
+    background-color: #005d3d;
+}
+body.pointer-events-none *{
+    display: none !important;
 }
 
 /*logo*/
@@ -105,6 +109,9 @@ ul{
     justify-content: center;
     position: fixed;
     z-index: 5;
+}
+.menu-area.initial-pos .cool-line{
+    width: 0%;
 }
 .menu-area.initial-pos{
     transform: translateX(0px);
@@ -190,9 +197,6 @@ address{
     background-color: white;
     height: 1px;
     margin-bottom: 30px;
-}
-.menu-area.initial-pos .cool-line{
-    width: 100%;
 }
 
 /*about section*/
@@ -348,10 +352,13 @@ address{
 }
 .company-details-item img{
     display: block;
-    width: 80%;
+    margin-top: -40px;
+}
+.company-details-item:first-child img{
+    margin-top: 0px;
 }
 .company-details-item .img-70{
-    width: 70%;
+    width: 90%;
 }
 .company-details-item .img-65{
     width: 65%;
@@ -475,6 +482,16 @@ footer img{
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
 }
+.expand-line{
+    -webkit-animation-name: expandLine;
+    animation-name: expandLine;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
 .fadeInUp {
     animation-name: fadeInUp;
 }
@@ -523,6 +540,23 @@ footer img{
     }
     100% {
         width: 8%;
+    }
+}
+
+@-webkit-keyframes expandLine {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+@keyframes expandLine {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
     }
 }
 
@@ -697,6 +731,9 @@ footer img{
 @media (min-width: 992px) {
     body{
         background-color: transparent;
+    }
+    .display-none{
+        display: none!important;
     }
     .width-calc{
         width: 960px;
@@ -1515,6 +1552,9 @@ footer img{
         display: none;
     }
     .hidden-mobile{
+        display: none;
+    }
+    .company-details-item .img-70.grey{
         display: none;
     }
 }
