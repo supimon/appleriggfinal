@@ -173,7 +173,7 @@ $(document).ready(function() {
                 .css({
                 'margin': '0px 0px 0px 0px',
                 'width': $(that).width(),
-                'height': $(that).height()
+                'height': 120.75/*$(that).height()*/
             }):
             $(this).clone().appendTo($('.thumb-slider-holder'))
                 .removeClass('original')
@@ -181,7 +181,7 @@ $(document).ready(function() {
                 .css({
                 'margin': '0px 0px 12px 0px',
                 'width': $(that).width(),
-                'height': $(that).height()
+                'height': 120.75/*$(that).height()*/
             });
     });
     // go into gallery detail view
