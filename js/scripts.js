@@ -7,7 +7,9 @@
             '#aboutApplerigg': $('#aboutApplerigg').offset().left,
             '#ourCompanies' : $('#ourCompanies').offset().left,
             '#ourBoard' : $('#ourBoard').offset().left
-        };
+        },
+        currThumb = 0,
+        moveY = "";
     // preloader animations
     $('.menu-area .cool-line').addClass('collapse-line');
     menuDivEasing = anime({
@@ -161,21 +163,199 @@
             }
         }, 250));
     });
-
-    $()
-
-    // image gallery experiments
-    /*$('.img-gallery .img-reel').css({
-        'max-height': 'calc('+$('.img-gallery').height()+'px - '+$($('.img-gallery .item')[0]).css('margin-bottom')+')',
-        'width' : $($('.img-gallery .item')[0]).width()+'px',
-        'left': $($('.img-gallery .item')[2]).position().left+'px'
+    // set the width and height of gallery for animation
+    $('.img-gallery > .relative-div')
+        .width($('.img-gallery > .relative-div').width())
+        .height($('.img-gallery > .relative-div').height());
+    $('img.original').each(function(k){
+        var that = this;
+        k == ($('img.original').length - 1) ?
+            $(this).clone().appendTo($('.thumb-slider-holder'))
+                .removeClass('original')
+                .addClass('thumb-item')
+                .css({
+                'margin': '0px 0px 0px 0px',
+                'width': $(that).width(),
+                'height': $(that).height()
+            }):
+            $(this).clone().appendTo($('.thumb-slider-holder'))
+                .removeClass('original')
+                .addClass('thumb-item')
+                .css({
+                'margin': '0px 0px 12px 0px',
+                'width': $(that).width(),
+                'height': $(that).height()
+            });
     });
-    $('.img-gallery .item').each(function(i){
-        $(this).click(function(){
-            $(this).css({
-                'transform': 'translateX(-'+$(this).position().left+'px) scale(2.12, 2.12)',
-                'transform-origin': i <= 2 ? 'top left' : 'bottom left'
+    // go into gallery detail view
+    $('.img-gallery > .relative-div > .item').click(function(){
+        var that = this,
+            $tempItem = $(this).clone(),
+            leftPos = $(this).position().left, // for holding the selected image
+            topPos = $(this).position().top,
+            offLeftPos = $('.img-gallery').offset().left - $(this).offset().left, // for moving the selected image
+            offTopPos = $('.img-gallery').offset().top - $(this).offset().top;
+        $('.img-reel').css('display', 'block'); // if not hidden before clicks on image thumbnails arent possible
+        // clone into position
+        $tempItem
+            .css({
+                'left': leftPos+'px',
+                'top': topPos+'px'
             })
+            .removeClass('original')
+            .addClass('duplicate')
+            .appendTo(".img-gallery > .relative-div");
+        $('.img-gallery > .relative-div').css({'overflow-y': 'hidden'}); // remove the thumbnail scrolls if any
+        // animate the gallery
+        $('.img-gallery .original').fadeOut('slow', function(){
+            var easing = anime({
+                targets: '.img-gallery .duplicate',
+                translateX: {
+                    value: '+='+offLeftPos,
+                    duration: 700
+                },
+                translateY: {
+                    value: '+='+offTopPos,
+                    duration: 700
+                },
+                width: {
+                    value: '*=2.12',
+                    delay: 200,
+                    duration: 600
+                },
+                height: {
+                    value: '*=2.12',
+                    delay: 200,
+                    duration: 600
+                },
+                easing: 'easeInOutQuart',
+                complete: function(){
+                    $tempItem.appendTo(".img-reel > .relative-div");
+                    var easing = anime({
+                        targets: '.img-gallery .thumb-slider',
+                        translateY: ['100%', '0%'],
+                        duration: 800,
+                        easing: 'easeInOutQuart',
+                        complete: function(){
+                            $('.slider-arrow-bottom, .slider-arrow-top').fadeIn('slow');
+                        }
+                    });
+                }
+            });
         });
-    });*/
+    });
+    $('.img-reel .thumb-item').click(function(){
+        var that = this,
+            $tempItem = $(this).clone(),
+            leftPos = $(this).position().left, // for holding the selected image
+            topPos = $(this).position().top,
+            offLeftPos = $('.img-gallery').offset().left - $(this).offset().left, // for moving the selected image
+            offTopPos = $('.img-gallery').offset().top - $(this).offset().top;
+        // clone into position
+        $tempItem
+            .css({
+                'position': 'absolute',
+                'left': -(offLeftPos)+'px',
+                'top': -(offTopPos)+'px'
+            })
+            .addClass('thumb-item-expanded')
+            .removeClass('thumb-item')
+            .appendTo('.img-reel .relative-div');
+        // animate the gallery
+        $('.img-gallery .duplicate').fadeOut('fast', function(){
+            var easing = anime({
+                targets: '.img-gallery .thumb-item-expanded',
+                translateX: {
+                    value: '+='+offLeftPos,
+                    duration: 700
+                },
+                translateY: {
+                    value: '+='+offTopPos,
+                    duration: 700
+                },
+                width: {
+                    value: '*=2.12',
+                    delay: 200,
+                    duration: 600
+                },
+                height: {
+                    value: '*=2.12',
+                    delay: 200,
+                    duration: 600
+                },
+                easing: 'easeInOutQuart',
+                complete: function(){
+                    $('.img-gallery .duplicate').remove();
+                    $tempItem.addClass('duplicate');
+                }
+            });
+        });
+    });
+    // go back to gallery tile view
+    $('.board-section .gallery:first-child h2').click(function(){
+        currThumb = 0;
+        $('.thumb-slider-holder').css('transform', 'none');
+        var easing = anime({
+            targets: '.img-gallery .thumb-slider',
+            translateY: ['0%', '100%'],
+            duration: 800,
+            easing: 'easeInOutQuart'
+        });
+        $('.slider-arrow-bottom, .slider-arrow-top').fadeOut('slow');
+        $('.img-gallery .duplicate').fadeOut('slow', function(){
+            var that = this;
+            $('.img-gallery .original').fadeIn('slow', function(){
+                $('.img-gallery > .relative-div').css({'overflow-y': 'auto'});
+                $(that).remove();
+                $('.img-reel').css('display', 'none');
+            });
+        })
+    });
+
+
+    $('.slider-arrow-bottom, .slider-arrow-top').one('click', function(){
+        moveY = $($('.thumb-item')[currThumb+1]).offset().top - $('.img-gallery').offset().top;
+        moveThumb(this);
+    })
+
+    function moveThumb(that){
+        var tempPos = '';
+        if($(that).hasClass('slider-arrow-bottom')){
+            if(currThumb == ($('.thumb-item').length - 2)) {
+                $('.slider-arrow-bottom, .slider-arrow-top').unbind();
+                $('.slider-arrow-bottom, .slider-arrow-top').one('click', function(){
+                    moveThumb(this);
+                });
+               return;
+            }
+            tempPos = '-='+moveY;
+
+            currThumb++;
+        }
+        else if($(that).hasClass('slider-arrow-top')){
+            if(currThumb == 0){
+                $('.slider-arrow-bottom, .slider-arrow-top').unbind();
+                $('.slider-arrow-bottom, .slider-arrow-top').one('click', function(){
+                    moveThumb(this);
+                });
+                return;
+            }
+            tempPos = '+='+moveY;
+
+            currThumb--;
+        }
+        var easing = anime({
+            targets: '.thumb-slider-holder',
+            translateY: tempPos,
+            duration: 800,
+            easing: 'easeInOutQuart',
+            complete: function(){
+                $('.slider-arrow-bottom, .slider-arrow-top').unbind();
+                $('.slider-arrow-bottom, .slider-arrow-top').one('click', function(){
+                    moveThumb(this);
+                });
+            }
+        });
+    }
+
 })();
