@@ -210,7 +210,7 @@ $(document).ready(function() {
                 });
     });
     // go into gallery detail view
-    $('.img-gallery > .relative-div > .item').click(function(){
+    $('.img-gallery > .relative-div > .original').click(function(){
         // set the width and height of gallery for animation
         $('.img-gallery > .relative-div')
             .width($('.img-gallery > .relative-div').width())
@@ -234,42 +234,43 @@ $(document).ready(function() {
             .appendTo(".img-gallery > .relative-div");
         $('.img-gallery > .relative-div').css({'overflow-y': 'hidden'}); // remove the thumbnail scrolls if any
         // animate the gallery
-        $('.img-gallery .original').fadeOut('slow', function(){
-            var easing = anime({
-                targets: '.img-gallery .duplicate',
-                translateX: {
-                    value: '+='+offLeftPos,
-                    duration: 700
-                },
-                translateY: {
-                    value: '+='+offTopPos,
-                    duration: 700
-                },
-                width: {
-                    value: '*=2.12',
-                    delay: 200,
-                    duration: 600
-                },
-                height: {
-                    value: '*=2.12',
-                    delay: 200,
-                    duration: 600
-                },
-                easing: 'easeInOutQuart',
-                complete: function(){
-                    $tempItem.appendTo(".img-reel > .relative-div");
-                    var easing = anime({
-                        targets: '.img-gallery .thumb-slider',
-                        translateY: ['100%', '0%'],
-                        duration: 800,
-                        easing: 'easeInOutQuart',
-                        complete: function(){
-                            $('.slider-arrow-bottom, .slider-arrow-top').fadeIn('slow');
-                            animateText(boardMem);
-                        }
-                    });
-                }
-            });
+        $('.img-gallery .original').fadeOut('slow');
+        var detailedViewAnim = anime({
+            targets: '.img-gallery .duplicate',
+            translateX: {
+                value: '+='+offLeftPos,
+                duration: 700,
+                delay: 1000
+            },
+            translateY: {
+                value: '+='+offTopPos,
+                duration: 700,
+                delay: 1000
+            },
+            width: {
+                value: '*=2.12',
+                delay: 1200,
+                duration: 600
+            },
+            height: {
+                value: '*=2.12',
+                delay: 1200,
+                duration: 600
+            },
+            easing: 'easeInOutQuart',
+            complete: function(){
+                $tempItem.appendTo(".img-reel > .relative-div");
+                var easing = anime({
+                    targets: '.img-gallery .thumb-slider',
+                    translateY: ['100%', '0%'],
+                    duration: 800,
+                    easing: 'easeInOutQuart',
+                    complete: function(){
+                        $('.slider-arrow-bottom, .slider-arrow-top').fadeIn('slow');
+                        animateText(boardMem);
+                    }
+                });
+            }
         });
     });
     // gallery thumb animations
