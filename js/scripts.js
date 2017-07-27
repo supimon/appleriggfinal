@@ -16,14 +16,16 @@ $(document).ready(function() {
         $('.about-title').height($('.about-contents').height());
 
     // preloader animations
-    $('.menu-area .cool-line').addClass('expand-line');
+    $('.menu-area .cool-line').addClass('expand-line').on('animationend', function(){
+        $('body').removeClass('green').removeClass('pointer-events-none');
+    });
     menuDivEasing = anime({
         targets: '.menu-area',
         translateX: [0, menuAreaLeftPos.pos],
         delay: 2000,
         easing: 'easeInOutQuart',
         complete: function(){
-            $('body').removeClass('pointer-events-none');
+
             $('.menu-area').removeClass('initial-pos');
             $('.menu-area .cool-line').removeClass('expand-line');
         }

@@ -30,10 +30,14 @@ ul{
 }
 .pointer-events-none{
     pointer-events: none;
+}
+.green{
     background-color: #005d3d;
 }
-body.pointer-events-none *{
-    display: none !important;
+body.pointer-events-none .mobile-logo-holder,
+body.pointer-events-none .section-slider,
+body.pointer-events-none .body-section {
+    visibility: hidden !important;
 }
 
 /*logo*/
@@ -99,6 +103,9 @@ body.pointer-events-none *{
     background-color: #005d3d;
 }
 /*menu section*/
+.menu-area.initial-pos{
+    transform: translateX(0px);
+}
 .menu-area{
     width: 100vw;
     height: 100vh;
@@ -112,9 +119,6 @@ body.pointer-events-none *{
 }
 .menu-area.initial-pos .cool-line{
     width: 0%;
-}
-.menu-area.initial-pos{
-    transform: translateX(0px);
 }
 .menu-holder{
     width: calc(100vw - 30px);
