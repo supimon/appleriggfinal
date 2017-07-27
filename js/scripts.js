@@ -163,10 +163,7 @@ $(document).ready(function() {
             }
         }, 250));
     });
-    // set the width and height of gallery for animation
-    $('.img-gallery > .relative-div')
-        .width($('.img-gallery > .relative-div').width())
-        .height($('.img-gallery > .relative-div').height());
+
     $('img.original').each(function(k){
         var that = this;
         k == ($('img.original').length - 1) ?
@@ -189,6 +186,10 @@ $(document).ready(function() {
     });
     // go into gallery detail view
     $('.img-gallery > .relative-div > .item').click(function(){
+        // set the width and height of gallery for animation
+        $('.img-gallery > .relative-div')
+            .width($('.img-gallery > .relative-div').width())
+            .height($('.img-gallery > .relative-div').height());
         var that = this,
             $tempItem = $(this).clone(),
             boardMem = $(this).data('name'),
