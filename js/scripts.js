@@ -1,4 +1,4 @@
-(function() {
+$(document).ready(function() {
     var menuDivEasing, hamburgerTimer, currWidth = getCurrWidth(),
         menuAreaLeftPos = {
             "pos" : getMenuLeftPos()
@@ -191,6 +191,7 @@
     $('.img-gallery > .relative-div > .item').click(function(){
         var that = this,
             $tempItem = $(this).clone(),
+            boardMem = $(this).data('name'),
             leftPos = $(this).position().left, // for holding the selected image
             topPos = $(this).position().top,
             offLeftPos = $('.img-gallery').offset().left - $(this).offset().left, // for moving the selected image
@@ -238,6 +239,7 @@
                         easing: 'easeInOutQuart',
                         complete: function(){
                             $('.slider-arrow-bottom, .slider-arrow-top').fadeIn('slow');
+                            animateText(boardMem);
                         }
                     });
                 }
@@ -246,6 +248,7 @@
     });
     $('.img-reel .thumb-item').click(function(){
         var that = this,
+            boardMem = $(this).data('name'),
             $tempItem = $(this).clone(),
             leftPos = $(this).position().left, // for holding the selected image
             topPos = $(this).position().top,
@@ -287,10 +290,23 @@
                 complete: function(){
                     $('.img-gallery .duplicate').remove();
                     $tempItem.addClass('duplicate');
+                    animateText(boardMem);
                 }
             });
         });
     });
+    function animateText(boardMem){
+        var titlePos = $('.gallery.'+boardMem+' .title-position').clone().css({'display' : 'block'}),
+            personIntro = $('.details.'+boardMem+' .person-intro').clone().css({'display' : 'block'});
+        $('.gallery.hidden-mobile .title-position, .details.hidden-mobile .person-intro').fadeOut('slow', function() {
+            $('.gallery.hidden-mobile .title-position').remove();
+            $('.details.hidden-mobile .person-intro').remove();
+            $('.gallery.hidden-mobile h2').after(titlePos);
+            $('.details.hidden-mobile').append(personIntro);
+            $('.gallery.hidden-mobile .title-position, .details.hidden-mobile .person-intro')
+                .addClass('animated fadeInUpSmall');
+        });
+    }
     // go back to gallery tile view
     $('.board-section .gallery:first-child h2').click(function(){
         currThumb = 0;
@@ -310,6 +326,11 @@
                 $('.img-reel').css('display', 'none');
             });
         })
+        $('.gallery.hidden-mobile .title-position, .details.hidden-mobile .person-intro').fadeOut('slow', function() {
+            $('.gallery.hidden-mobile .title-position, .details.hidden-mobile .person-intro')
+                .removeClass('animated fadeinUpSmall')
+                .empty();
+        });
     });
 
 
@@ -358,4 +379,4 @@
         });
     }
 
-})();
+});

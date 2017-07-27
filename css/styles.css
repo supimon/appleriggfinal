@@ -464,6 +464,9 @@ footer img{
 .fadeInUp {
     animation-name: fadeInUp;
 }
+.fadeInUpSmall {
+    animation-name: fadeInUpSmall;
+}
 .about-title.fadeInUp,
 .about-contents h2.fadeInUp,
 .about-contents p.fadeInUp{
@@ -513,6 +516,17 @@ footer img{
     from {
         opacity: 0;
         transform: translate3d(0, 100%, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+@keyframes fadeInUpSmall {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 20%, 0);
     }
 
     to {
@@ -926,6 +940,11 @@ footer img{
     }
     .gallery .mobile-img{
         display: none;
+    }
+    .gallery.hidden-mobile .title-position,
+    .details.hidden-mobile .person-intro {
+        opacity: 0;
+        transform: translate3d(0, 20%, 0);
     }
     .board-section .title-position h3{
         font-size: 24px;
