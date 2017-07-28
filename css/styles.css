@@ -290,6 +290,24 @@ address{
 .about-section .slide-indicator-ul li:before{
     left: 6px;
 }
+#testim-slider {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+}
+#testim-slider ul {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#testim-slider ul li {
+    position: relative;
+    display: block;
+    float: left;
+    margin: 0px;
+    padding: 0px 20px 0px 0px;
+}
 
 /*company section*/
 .company-holder{
