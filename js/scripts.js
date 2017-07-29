@@ -32,7 +32,7 @@ $(document).ready(function() {
     $('#testim-slider').css({ height: maxTestimHeight });
     $('#testim-slider  ul').css({ width: testimSliderWidth});
     // $('#testim-slider  ul li:last-child').prependTo('#testim-slider ul');
-    $('.slide-indicator-ul li a').click(function(e){
+    $('.about-title .slide-indicator-ul li a').click(function(e){
         e.preventDefault();
         $('.testimonails .slide-indicator-ul li').removeClass('is-active');
         $(this).parent().addClass('is-active');
