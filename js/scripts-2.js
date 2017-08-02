@@ -319,18 +319,11 @@ $(document).ready(function() {
 
     /* gallery animations and resets */
 
-    // prepare clones for gallery
-    $('img.original').each(function(k){
-        var that = this;
-        k == ($('img.original').length - 1) ?
-            $(this).clone().appendTo($('.thumb-slider-holder'))
-                .removeClass('original')
-                .addClass('thumb-item')
-                .css({
-                    'margin': '0px 0px 0px 0px',
-                    'width': $(that).width(),
-                    'height': 120.75/*$(that).height()*/
-                }):
+    // go into gallery detail view
+    $('.img-gallery > .relative-div > .original').click(function(){
+        // prepare clones for gallery
+        $('img.original').each(function(k){
+            var that = this;
             $(this).clone().appendTo($('.thumb-slider-holder'))
                 .removeClass('original')
                 .addClass('thumb-item')
@@ -338,10 +331,9 @@ $(document).ready(function() {
                     'margin': '0px 0px 12px 0px',
                     'width': $(that).width(),
                     'height': 120.75/*$(that).height()*/
-                });
-    });
-    // go into gallery detail view
-    $('.img-gallery > .relative-div > .original').click(function(){
+            });
+        });
+
         // set the width and height of gallery for animation
         $('.img-gallery > .relative-div')
             .width($('.img-gallery > .relative-div').width())
@@ -353,6 +345,9 @@ $(document).ready(function() {
             topPos = $(this).position().top,
             offLeftPos = $('.img-gallery').offset().left - $(this).offset().left, // for moving the selected image
             offTopPos = $('.img-gallery').offset().top - $(this).offset().top;
+        // reorder clones items so that current item is the first one in the list
+        $('.thumb-slider-holder [data-name="'+boardMem+'"]').prependTo($('.thumb-slider-holder'));
+        $('.thumb-item:last-child').css({'margin-bottom': '0px'});
         $('.img-reel').css('display', 'block'); // if not hidden before clicks on image thumbnails arent possible
         // clone into position
         $tempItem
@@ -397,63 +392,72 @@ $(document).ready(function() {
                     duration: 800,
                     easing: 'easeInOutQuart',
                     complete: function(){
-                        $('.slider-arrow-bottom, .slider-arrow-top').fadeIn('slow');
-                        animateText(boardMem);
-                        $('.img-gallery').addClass('detail-view').children('.close-gal').one('click',
-                            galleryCloseHandler);
+                        var easing = anime({
+                            targets: '.thumb-slider-holder',
+                            translateY: '-137px',
+                            duration: 500,
+                            easing: 'easeInOutQuart',
+                            complete: function(){
+                                currThumb = 1;
+                                $('.slider-arrow-bottom, .slider-arrow-top').fadeIn('slow');
+                                animateText(boardMem);
+                                $('.img-gallery').addClass('detail-view').children('.close-gal').one('click',
+                                    galleryCloseHandler);
+                                // gallery thumb animations
+                                $('.img-reel .thumb-item').click(function(){
+                                    var that = this,
+                                        boardMem = $(this).data('name'),
+                                        $tempItem = $(this).clone(),
+                                        leftPos = $(this).position().left, // for holding the selected image
+                                        topPos = $(this).position().top,
+                                        offLeftPos = $('.img-gallery').offset().left - $(this).offset().left, // for moving the selected image
+                                        offTopPos = $('.img-gallery').offset().top - $(this).offset().top;
+                                    // clone into position
+                                    $tempItem
+                                        .css({
+                                            'position': 'absolute',
+                                            'left': -(offLeftPos)+'px',
+                                            'top': -(offTopPos)+'px'
+                                        })
+                                        .addClass('thumb-item-expanded')
+                                        .removeClass('thumb-item')
+                                        .appendTo('.img-reel .relative-div');
+                                    // animate the gallery
+                                    $('.img-gallery .duplicate').fadeOut('fast', function(){
+                                        var easing = anime({
+                                            targets: '.img-gallery .thumb-item-expanded',
+                                            translateX: {
+                                                value: '+='+offLeftPos,
+                                                duration: 700
+                                            },
+                                            translateY: {
+                                                value: '+='+offTopPos,
+                                                duration: 700
+                                            },
+                                            width: {
+                                                value: '*=2.12',
+                                                delay: 200,
+                                                duration: 600
+                                            },
+                                            height: {
+                                                value: '*=2.12',
+                                                delay: 200,
+                                                duration: 600
+                                            },
+                                            easing: 'easeInOutQuart',
+                                            complete: function(){
+                                                $('.img-gallery .duplicate').remove();
+                                                $tempItem.addClass('duplicate');
+                                                animateText(boardMem);
+                                            }
+                                        });
+                                    });
+                                });
+                            }
+                        });
                     }
                 });
             }
-        });
-    });
-    // gallery thumb animations
-    $('.img-reel .thumb-item').click(function(){
-        var that = this,
-            boardMem = $(this).data('name'),
-            $tempItem = $(this).clone(),
-            leftPos = $(this).position().left, // for holding the selected image
-            topPos = $(this).position().top,
-            offLeftPos = $('.img-gallery').offset().left - $(this).offset().left, // for moving the selected image
-            offTopPos = $('.img-gallery').offset().top - $(this).offset().top;
-        // clone into position
-        $tempItem
-            .css({
-                'position': 'absolute',
-                'left': -(offLeftPos)+'px',
-                'top': -(offTopPos)+'px'
-            })
-            .addClass('thumb-item-expanded')
-            .removeClass('thumb-item')
-            .appendTo('.img-reel .relative-div');
-        // animate the gallery
-        $('.img-gallery .duplicate').fadeOut('fast', function(){
-            var easing = anime({
-                targets: '.img-gallery .thumb-item-expanded',
-                translateX: {
-                    value: '+='+offLeftPos,
-                    duration: 700
-                },
-                translateY: {
-                    value: '+='+offTopPos,
-                    duration: 700
-                },
-                width: {
-                    value: '*=2.12',
-                    delay: 200,
-                    duration: 600
-                },
-                height: {
-                    value: '*=2.12',
-                    delay: 200,
-                    duration: 600
-                },
-                easing: 'easeInOutQuart',
-                complete: function(){
-                    $('.img-gallery .duplicate').remove();
-                    $tempItem.addClass('duplicate');
-                    animateText(boardMem);
-                }
-            });
         });
     });
     // animate gallery text
@@ -495,6 +499,7 @@ $(document).ready(function() {
                 .removeClass('animated fadeinUpSmall')
                 .empty();
             $('.img-gallery').removeClass('detail-view');
+            $('.thumb-slider-holder').empty();
         });
     }
     // slider move actions

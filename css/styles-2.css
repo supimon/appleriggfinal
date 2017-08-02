@@ -1173,7 +1173,8 @@ footer img{
     .slider-arrow-top p{
         display: inline-block;
         line-height: 0px;
-        margin: 0px;
+        margin: 10px 0px 0px 0px;
+        font-size: 20px;
     }
     .slider-arrow-top p{
         transform: rotate(90deg);
