@@ -1208,13 +1208,19 @@ footer img{
     footer address{
         font-size: 16px;
         line-height: 25px;
-        margin: 20vh 50px;
+        margin: 17vh 50px;
         letter-spacing: 0px;
         font-family: 'NationalLight', Arial, sans-serif;
     }
+    footer address .cool-line{
+        height: 1px;
+        background-color: #005d3d;
+        width: 23px;
+        margin-bottom: 64px;
+    }
     footer img{
         width: 31%;
-        margin: 16vh 50px 20px 50px;
+        margin: 13vh 50px 20px 50px;
     }
 
     /*animation classes*/
