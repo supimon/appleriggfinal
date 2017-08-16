@@ -364,7 +364,7 @@ address{
     letter-spacing: 0.2px;
     line-height: 25px;
 }
-.company-details-item a{
+.company-details-item .detailed a{
     font-family: 'NationalLight', Arial, sans-serif;
     text-decoration: none;
     color: #005d3d;
