@@ -369,6 +369,8 @@ address{
     text-decoration: none;
     color: #005d3d;
     font-size: 14px;
+    position: relative;
+    z-index: 2;
 }
 .company-details-item .cool-line{
     width: 20px;
@@ -389,6 +391,8 @@ address{
 .company-details-item img{
     display: block;
     margin-top: -40px;
+    position: relative;
+    z-index: 1;
 }
 .company-details-item:first-child img{
     margin-top: 0px;
