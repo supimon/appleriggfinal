@@ -485,6 +485,9 @@ address{
 .img-gallery .close-gal{
     display: none;
 }
+.img-gallery .relative-div{
+    overflow-x: hidden;
+}
 .img-gallery .relative-div:after {
     content: " ";
     display: block;

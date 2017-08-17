@@ -92,6 +92,7 @@ $(document).ready(function() {
             });
         }
         else{
+            if($('.img-gallery').hasClass('detail-view')) galleryCloseHandler();
             menuDivEasing = anime({
                 targets: '.menu-area',
                 translateX: [menuAreaLeftPos.pos, 0],
@@ -239,6 +240,7 @@ $(document).ready(function() {
         e.preventDefault();
         $(window).unbind('scroll');
         var id = $(this).attr("href");
+        if((id != '#ourBoard') && $('.img-gallery').hasClass('detail-view')) galleryCloseHandler();
         if($(this).parents('.menu-holder').length) $('.hamburger').trigger('click');
         $('.section-slider li').removeClass('is-active');
         $('.'+id.substring(1)).addClass('is-active');
