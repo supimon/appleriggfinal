@@ -193,6 +193,7 @@ nav, .menu-holder address{
 }
 nav ul{
     font-family: 'NationalLight', Arial, sans-serif;
+    /*font-family: 'Lato', Arial, sans-serif;*/
     font-size: 32px;
     list-style: none;
     color: white;
@@ -203,7 +204,8 @@ nav ul li{
 }
 address{
     text-align: left;
-    font-family: 'NationalLight', Arial, sans-serif;
+    /*font-family: 'NationalLight', Arial, sans-serif;*/
+    font-family: 'Lato', Arial, sans-serif;
     font-size: 14px;
     color: white;
     font-style: normal;
@@ -247,14 +249,16 @@ address{
 .about-contents h2{
     transform: translateY(100%);
     opacity: 0;
-    font-family: 'NationalLight', Arial, sans-serif;
+    /*font-family: 'NationalLight', Arial, sans-serif;*/
+    font-family: 'Lato', Arial, sans-serif;
     color: #005d3d;
     letter-spacing: .5px;
     font-size: 26px;
     line-height: 33px;
 }
 .about-contents > p {
-    font-family: 'NationalLight', Arial, sans-serif;
+    /*font-family: 'NationalLight', Arial, sans-serif;*/
+    font-family: 'Lato', Arial, sans-serif;
     font-size: 18px;
     position: relative;
     letter-spacing: 0.2px;
@@ -299,7 +303,8 @@ address{
 }
 .testimonails small{
     color: #005d3d;
-    font-family: 'NationalLight', Arial, sans-serif;
+    /*font-family: 'NationalLight', Arial, sans-serif;*/
+    font-family: 'Lato', Arial, sans-serif;
 }
 .about-section .slide-indicator-ul li:before{
     left: 6px;
@@ -333,7 +338,8 @@ address{
 }
 .company-title{
     text-align: left;
-    font-family: 'NationalLight', Arial, sans-serif;
+    /*font-family: 'NationalLight', Arial, sans-serif;*/
+    font-family: 'Lato', Arial, sans-serif;
     color: #005d3d;
     margin-left: 65px;
 }
@@ -348,16 +354,19 @@ address{
     position: relative;
 }
 .company-details-item h3{
-    font-family: 'NationalLight', Arial, sans-serif;
+    /*font-family: 'NationalLight', Arial, sans-serif;*/
+    font-family: 'Lato', Arial, sans-serif;
     color: #005d3d;
     font-size: 26px;
 }
 .company-details-item h3.thinner{
-    font-family: 'NationalLight', Arial, sans-serif;
+    /*font-family: 'NationalLight', Arial, sans-serif;*/
+    font-family: 'Lato', Arial, sans-serif;
     color: #404040;
 }
 .company-details-item p {
-    font-family: 'NationalLight', Arial, sans-serif;
+    /*font-family: 'NationalLight', Arial, sans-serif;*/
+    font-family: 'Lato', Arial, sans-serif;
     font-size: 18px;
     color: #404040;
     position: relative;
@@ -365,7 +374,8 @@ address{
     line-height: 25px;
 }
 .company-details-item .detailed a{
-    font-family: 'NationalLight', Arial, sans-serif;
+    /*font-family: 'NationalLight', Arial, sans-serif;*/
+    font-family: 'Lato', Arial, sans-serif;
     text-decoration: none;
     color: #005d3d;
     font-size: 14px;
@@ -430,7 +440,8 @@ address{
     margin-bottom: 3vh;
 }
 .gallery h2{
-    font-family: 'NationalLight', Arial, sans-serif;
+    /*font-family: 'NationalLight', Arial, sans-serif;*/
+    font-family: 'Lato', Arial, sans-serif;
     color: #404040;
     font-size: 22px;
     margin-top: 0px;
@@ -449,7 +460,8 @@ address{
     margin-bottom: 25px;
 }
 .board-section .title-position h3{
-    font-family: 'NationalLight', Arial, sans-serif;
+    /*font-family: 'NationalLight', Arial, sans-serif;*/
+    font-family: 'Lato', Arial, sans-serif;
     color: #005d3d;
     font-size: 22px;
     margin-bottom: 18px;
@@ -458,20 +470,23 @@ address{
 .board-section .title-position p{
     font-size: 18px;
     line-height: 24px;
-    font-family: 'NationalLight', Arial, sans-serif;
+    /*font-family: 'NationalLight', Arial, sans-serif;*/
+    font-family: 'Lato', Arial, sans-serif;
     margin-top: 8px;
     margin-bottom: 0px;
     margin-right: 40px;
     color: #404040;
 }
 .board-section .person-intro h3{
-    font-family: 'NationalLight', Arial, sans-serif;
+    /*font-family: 'NationalLight', Arial, sans-serif;*/
+    font-family: 'Lato', Arial, sans-serif;
     color: #005d3d;
     font-size: 24px;
     margin-top: 0px;
 }
 .board-section .person-intro p{
-    font-family: 'NationalLight', Arial, sans-serif;
+    /*font-family: 'NationalLight', Arial, sans-serif;*/
+    font-family: 'Lato', Arial, sans-serif;
     font-size: 18px;
     color: #404040;
     position: relative;
@@ -1077,13 +1092,15 @@ footer img{
         overflow-y: auto;
     }
     .board-section .person-intro h3{
-        font-family: 'NationalLight', Arial, sans-serif;
+        /*font-family: 'NationalLight', Arial, sans-serif;*/
+        font-family: 'Lato', Arial, sans-serif;
         color: #005d3d;
         font-size: 24px;
         margin-top: 0px;
     }
     .board-section .person-intro p{
-        font-family: 'NationalLight', Arial, sans-serif;
+        /*font-family: 'NationalLight', Arial, sans-serif;*/
+        font-family: 'Lato', Arial, sans-serif;
         font-size: 16px;
         color: #404040;
         position: relative;
@@ -1218,7 +1235,8 @@ footer img{
         line-height: 25px;
         margin: 17vh 50px;
         letter-spacing: 0px;
-        font-family: 'NationalLight', Arial, sans-serif;
+        /*font-family: 'NationalLight', Arial, sans-serif;*/
+        font-family: 'Lato', Arial, sans-serif;
     }
     footer address .cool-line{
         height: 1px;
@@ -1424,7 +1442,8 @@ footer img{
         line-height: 22px;
     }
     .testimonails .author {
-        font-size: 18px;
+        /*font-size: 18px;*/
+        font-size: 17px;
     }
     .testimonails h2 {
         font-size: 41px;
