@@ -1404,6 +1404,22 @@ footer img{
         to { transform: translateY(0px) }
     }
 
+    /*safari fix for fonts*/
+    _::-webkit-full-page-media, _:future, :root .about-contents h2 {
+        letter-spacing: -0.5px;
+    }
+    _::-webkit-full-page-media, _:future, :root .company-title h2 {
+        letter-spacing: -0.5px;
+    }
+    _::-webkit-full-page-media, _:future, :root .gallery h2 {
+        letter-spacing: -0.5px;
+    }
+    _::-webkit-full-page-media, _:future, :root .board-section .title-position h3 {
+        letter-spacing: -0.5px;
+    }
+    _::-webkit-full-page-media, _:future, :root .board-section .person-intro h3 {
+        letter-spacing: -0.5px;
+    }
 }
 @media (min-width: 1200px) {
     .width-calc{
