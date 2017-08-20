@@ -17,13 +17,13 @@ $(document).ready(function() {
         testimSliderWidth = testimItemWidth * testimSlideCount,
         totalBodyWidth, leftLimit, totalBodyHeight,
         /*tablet = (  (currWidth == 'xxl' || currWidth == 'lg' || currWidth == 'md') &&
-                    (WURFL.form_factor === "Tablet")) ?
-                    true : false;*/
+         (WURFL.form_factor === "Tablet")) ?
+         true : false;*/
         tablet = (currWidth == 'xxl' || currWidth == 'lg' || currWidth == 'md') ? true : false; // test
 
     /* initial setups */
     if(tablet){
-            totalBodyWidth = $('#aboutApplerigg').width()+ $('#ourCompanies').width()+
+        totalBodyWidth = $('#aboutApplerigg').width()+ $('#ourCompanies').width()+
             $('.company-holder').width()+ $('#ourBoard').width(),
             leftLimit = totalBodyWidth - $(window).width(),
             totalBodyHeight = leftLimit + $(window).height();
@@ -221,17 +221,17 @@ $(document).ready(function() {
     // company lift animation
     $('.company-details-item')
         .on('mouseover', function(){
-        $(this).children(".detailed").removeClass('dip-company').addClass('lift-company').end()
-            .children(".cool-line").removeClass("raise-line").addClass("sink-line").end()
-            .find("img.grey").addClass('display-none').end()
-            .find("img.color").removeClass('display-none');
-    })
+            $(this).children(".detailed").removeClass('dip-company').addClass('lift-company').end()
+                .children(".cool-line").removeClass("raise-line").addClass("sink-line").end()
+                .find("img.grey").addClass('display-none').end()
+                .find("img.color").removeClass('display-none');
+        })
         .on('mouseout', function(){
-        $(this).children(".detailed").removeClass('lift-company').addClass('dip-company').end()
-            .children(".cool-line").removeClass("sink-line").addClass("raise-line").end()
-            .find("img.color").addClass('display-none').end()
-            .find("img.grey").removeClass('display-none');
-    });
+            $(this).children(".detailed").removeClass('lift-company').addClass('dip-company').end()
+                .children(".cool-line").removeClass("sink-line").addClass("raise-line").end()
+                .find("img.color").addClass('display-none').end()
+                .find("img.grey").removeClass('display-none');
+        });
 
     /* scroll horizontally */
 
@@ -275,10 +275,10 @@ $(document).ready(function() {
             clearTimeout($.data(this, 'scrollTimer'));
             $.data(this, 'scrollTimer', setTimeout(function() {
                 if (($('#ourCompanies').offset().left < ($(window).width()/2)) &&
-                   ($('#ourCompanies').offset().left >= -($(window).width()/2)) &&
+                    ($('#ourCompanies').offset().left >= -($(window).width()/2)) &&
                     !$('.ourCompanies').hasClass('is-active')) {
-                        $('.section-slider li').removeClass('is-active');
-                        $('.ourCompanies').addClass('is-active');
+                    $('.section-slider li').removeClass('is-active');
+                    $('.ourCompanies').addClass('is-active');
                 }
                 else if(($('#ourBoard').offset().left < ($(window).width()/2)) &&
                     !$('.ourBoard').hasClass('is-active')){
@@ -325,16 +325,16 @@ $(document).ready(function() {
     $('.img-gallery > .relative-div > .original').click(function(){
         // prepare clones for gallery
         /*$('img.original').each(function(k){
-            var that = this;
-            $(this).clone().appendTo($('.thumb-slider-holder'))
-                .removeClass('original')
-                .addClass('thumb-item')
-                .css({
-                    'margin': '0px 0px 12px 0px',
-                    'width': $(that).width(),
-                    'height': 120.75/!*$(that).height()*!/
-            });
-        });*/
+         var that = this;
+         $(this).clone().appendTo($('.thumb-slider-holder'))
+         .removeClass('original')
+         .addClass('thumb-item')
+         .css({
+         'margin': '0px 0px 12px 0px',
+         'width': $(that).width(),
+         'height': 120.75/!*$(that).height()*!/
+         });
+         });*/
 
         // set the width and height of gallery for animation
         $('.img-gallery > .relative-div')
@@ -349,8 +349,8 @@ $(document).ready(function() {
             offTopPos = $('.img-gallery').offset().top - $(this).offset().top;
         // reorder clones items so that current item is the first one in the list
         /*$('.thumb-slider-holder [data-name="'+boardMem+'"]').prependTo($('.thumb-slider-holder'));
-        $('.thumb-item:last-child').css({'margin-bottom': '0px'});
-        $('.img-reel').css('display', 'block'); // if not hidden before clicks on image thumbnails arent possible */
+         $('.thumb-item:last-child').css({'margin-bottom': '0px'});
+         $('.img-reel').css('display', 'block'); // if not hidden before clicks on image thumbnails arent possible */
         // clone into position
         $tempItem
             .css({
@@ -391,77 +391,77 @@ $(document).ready(function() {
                 $('.img-gallery').addClass('detail-view').children('.close-gal').one('click',
                     galleryCloseHandler);
                 /*$tempItem.appendTo(".img-reel > .relative-div");
-                var easing = anime({
-                    targets: '.img-gallery .thumb-slider',
-                    translateY: ['100%', '0%'],
-                    duration: 800,
-                    easing: 'easeInOutQuart',
-                    complete: function(){
-                        var easing = anime({
-                            targets: '.thumb-slider-holder',
-                            translateY: '-137px',
-                            duration: 500,
-                            easing: 'easeInOutQuart',
-                            complete: function(){
-                                currThumb = 1;
-                                $('.slider-arrow-bottom, .slider-arrow-top').fadeIn('slow');
-                                // animateText(boardMem);
-                                $('.img-gallery').addClass('detail-view').children('.close-gal').one('click',
-                                    galleryCloseHandler);
-                                // gallery thumb animations
-                                $('.img-reel .thumb-item').click(function(){
-                                    var that = this,
-                                        boardMem = $(this).data('name'),
-                                        $tempItem = $(this).clone(),
-                                        leftPos = $(this).position().left, // for holding the selected image
-                                        topPos = $(this).position().top,
-                                        offLeftPos = $('.img-gallery').offset().left - $(this).offset().left, // for moving the selected image
-                                        offTopPos = $('.img-gallery').offset().top - $(this).offset().top;
-                                    // clone into position
-                                    $tempItem
-                                        .css({
-                                            'position': 'absolute',
-                                            'left': -(offLeftPos)+'px',
-                                            'top': -(offTopPos)+'px'
-                                        })
-                                        .addClass('thumb-item-expanded')
-                                        .removeClass('thumb-item')
-                                        .appendTo('.img-reel .relative-div');
-                                    // animate the gallery
-                                    $('.img-gallery .duplicate').fadeOut('fast', function(){
-                                        var easing = anime({
-                                            targets: '.img-gallery .thumb-item-expanded',
-                                            translateX: {
-                                                value: '+='+offLeftPos,
-                                                duration: 700
-                                            },
-                                            translateY: {
-                                                value: '+='+offTopPos,
-                                                duration: 700
-                                            },
-                                            width: {
-                                                value: '*=2.12',
-                                                delay: 200,
-                                                duration: 600
-                                            },
-                                            height: {
-                                                value: '*=2.12',
-                                                delay: 200,
-                                                duration: 600
-                                            },
-                                            easing: 'easeInOutQuart',
-                                            complete: function(){
-                                                $('.img-gallery .duplicate').remove();
-                                                $tempItem.addClass('duplicate');
-                                                animateText(boardMem);
-                                            }
-                                        });
-                                    });
-                                });
-                            }
-                        });
-                    }
-                });*/
+                 var easing = anime({
+                 targets: '.img-gallery .thumb-slider',
+                 translateY: ['100%', '0%'],
+                 duration: 800,
+                 easing: 'easeInOutQuart',
+                 complete: function(){
+                 var easing = anime({
+                 targets: '.thumb-slider-holder',
+                 translateY: '-137px',
+                 duration: 500,
+                 easing: 'easeInOutQuart',
+                 complete: function(){
+                 currThumb = 1;
+                 $('.slider-arrow-bottom, .slider-arrow-top').fadeIn('slow');
+                 // animateText(boardMem);
+                 $('.img-gallery').addClass('detail-view').children('.close-gal').one('click',
+                 galleryCloseHandler);
+                 // gallery thumb animations
+                 $('.img-reel .thumb-item').click(function(){
+                 var that = this,
+                 boardMem = $(this).data('name'),
+                 $tempItem = $(this).clone(),
+                 leftPos = $(this).position().left, // for holding the selected image
+                 topPos = $(this).position().top,
+                 offLeftPos = $('.img-gallery').offset().left - $(this).offset().left, // for moving the selected image
+                 offTopPos = $('.img-gallery').offset().top - $(this).offset().top;
+                 // clone into position
+                 $tempItem
+                 .css({
+                 'position': 'absolute',
+                 'left': -(offLeftPos)+'px',
+                 'top': -(offTopPos)+'px'
+                 })
+                 .addClass('thumb-item-expanded')
+                 .removeClass('thumb-item')
+                 .appendTo('.img-reel .relative-div');
+                 // animate the gallery
+                 $('.img-gallery .duplicate').fadeOut('fast', function(){
+                 var easing = anime({
+                 targets: '.img-gallery .thumb-item-expanded',
+                 translateX: {
+                 value: '+='+offLeftPos,
+                 duration: 700
+                 },
+                 translateY: {
+                 value: '+='+offTopPos,
+                 duration: 700
+                 },
+                 width: {
+                 value: '*=2.12',
+                 delay: 200,
+                 duration: 600
+                 },
+                 height: {
+                 value: '*=2.12',
+                 delay: 200,
+                 duration: 600
+                 },
+                 easing: 'easeInOutQuart',
+                 complete: function(){
+                 $('.img-gallery .duplicate').remove();
+                 $tempItem.addClass('duplicate');
+                 animateText(boardMem);
+                 }
+                 });
+                 });
+                 });
+                 }
+                 });
+                 }
+                 });*/
             }
         });
     });
@@ -484,13 +484,13 @@ $(document).ready(function() {
     function galleryCloseHandler(){
         //currThumb = 0;
         /*$('.thumb-slider-holder').css('transform', 'none');
-        var easing = anime({
-            targets: '.img-gallery .thumb-slider',
-            translateY: ['0%', '100%'],
-            duration: 800,
-            easing: 'easeInOutQuart'
-        });
-        $('.slider-arrow-bottom, .slider-arrow-top').fadeOut('slow');*/
+         var easing = anime({
+         targets: '.img-gallery .thumb-slider',
+         translateY: ['0%', '100%'],
+         duration: 800,
+         easing: 'easeInOutQuart'
+         });
+         $('.slider-arrow-bottom, .slider-arrow-top').fadeOut('slow');*/
         $('.img-gallery .duplicate').fadeOut('slow', function(){
             var that = this;
             $('.img-gallery .original').fadeIn('slow', function(){
@@ -509,9 +509,9 @@ $(document).ready(function() {
     }
     // slider move actions
     /*$('.slider-arrow-bottom, .slider-arrow-top').one('click', function(){
-        moveY = $($('.thumb-item')[currThumb+1]).offset().top - $('.img-gallery').offset().top;
-        moveThumb(this);
-    })*/
+     moveY = $($('.thumb-item')[currThumb+1]).offset().top - $('.img-gallery').offset().top;
+     moveThumb(this);
+     })*/
     /*utility function to move thumb*/
     function moveThumb(that){
         var tempPos = '';
@@ -521,7 +521,7 @@ $(document).ready(function() {
                 $('.slider-arrow-bottom, .slider-arrow-top').one('click', function(){
                     moveThumb(this);
                 });
-               return;
+                return;
             }
             tempPos = '-='+moveY;
 
