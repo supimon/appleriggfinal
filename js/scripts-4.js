@@ -298,7 +298,7 @@ $(document).ready(function() {
     }
     // utility function to add virtual horizontal scroll
     function scrollHandler(that) {
-        /*$('.body-section').css({ left: -$(window).scrollTop()});*/
+        $('.body-section').css({ left: -$(window).scrollTop()});
         clearTimeout($.data(that, 'scrollTimer'));
         $.data(that, 'scrollTimer', setTimeout(function () {
             $('.body-section').animate({ left: -$(window).scrollTop()}, 250);
