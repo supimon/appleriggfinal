@@ -299,10 +299,10 @@ $(document).ready(function() {
     }
     // utility function to add virtual horizontal scroll
     function scrollHandler(that) {
-        $('.body-section').css({ left: -$(window).scrollTop()});
+        $('.body-section').stop( true, true ).css({ left: -$(window).scrollTop()});
         clearTimeout($.data(that, 'scrollTimer'));
         $.data(that, 'scrollTimer', setTimeout(function () {
-            $('.body-section').animate({ left: -$(window).scrollTop()}, 250);
+            /*$('.body-section').animate({ left: -$(window).scrollTop()}, 250);*/
             if (($(window).scrollTop() < ($('.vertical-scroll-div').height() * 0.5)) &&
                 ($(window).scrollTop() >= ($('.vertical-scroll-div').height() * 0.25)) &&
                 !$('.ourCompanies').hasClass('is-active')) {
