@@ -299,10 +299,11 @@ $(document).ready(function() {
     }
     // utility function to add virtual horizontal scroll
     function scrollHandler(that) {
-        $('.body-section').stop( true, true ).css({ left: -$(window).scrollTop()});
+        /*$('.body-section').stop( true ).css({ left: -$(window).scrollTop()});*/
         clearTimeout($.data(that, 'scrollTimer'));
         $.data(that, 'scrollTimer', setTimeout(function () {
             /*$('.body-section').animate({ left: -$(window).scrollTop()}, 250);*/
+            $('.body-section').stop( true ).css({ left: -$(window).scrollTop()});
             if (($(window).scrollTop() < ($('.vertical-scroll-div').height() * 0.5)) &&
                 ($(window).scrollTop() >= ($('.vertical-scroll-div').height() * 0.25)) &&
                 !$('.ourCompanies').hasClass('is-active')) {
@@ -318,7 +319,7 @@ $(document).ready(function() {
                 $('.section-slider li').removeClass('is-active');
                 $('.aboutApplerigg').addClass('is-active');
             }
-        }, 250));
+        }, 10));
     }
 
     /* gallery animations and resets */
