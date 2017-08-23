@@ -17,6 +17,7 @@ $(document).ready(function() {
         testimSlideCount = $('#testim-slider ul li').length,
         testimSliderWidth = testimItemWidth * testimSlideCount,
         totalBodyWidth, leftLimit, totalBodyHeight,
+        beingScrolled = false,
         /*tablet = (  (currWidth == 'xxl' || currWidth == 'lg' || currWidth == 'md') &&
          (WURFL.form_factor === "Tablet")) ?
          true : false;*/
@@ -222,16 +223,18 @@ $(document).ready(function() {
     // company lift animation
     $('.company-details-item')
         .on('mouseover', function(){
-            $(this).children(".detailed").removeClass('dip-company').addClass('lift-company').end()
-                .children(".cool-line").removeClass("raise-line").addClass("sink-line").end()
-                .find("img.grey").addClass('display-none').end()
-                .find("img.color").removeClass('display-none');
+            if(!beingScrolled)
+                $(this).children(".detailed").removeClass('dip-company').addClass('lift-company').end()
+                    .children(".cool-line").removeClass("raise-line").addClass("sink-line").end()
+                    .find("img.grey").addClass('display-none').end()
+                    .find("img.color").removeClass('display-none');
         })
         .on('mouseout', function(){
-            $(this).children(".detailed").removeClass('lift-company').addClass('dip-company').end()
-                .children(".cool-line").removeClass("sink-line").addClass("raise-line").end()
-                .find("img.color").addClass('display-none').end()
-                .find("img.grey").removeClass('display-none');
+            if(!beingScrolled)
+                $(this).children(".detailed").removeClass('lift-company').addClass('dip-company').end()
+                    .children(".cool-line").removeClass("sink-line").addClass("raise-line").end()
+                    .find("img.color").addClass('display-none').end()
+                    .find("img.grey").removeClass('display-none');
         });
 
     /* scroll horizontally */
@@ -294,32 +297,40 @@ $(document).ready(function() {
         });
     }else{
         $(window).scroll(function(){
+            beingScrolled = true;
             scrollHandler(this);
         });
     }
     // utility function to add virtual horizontal scroll
     function scrollHandler(that) {
-        /*$('.body-section').stop( true ).css({ left: -$(window).scrollTop()});*/
+        $('.body-section').stop( true, true ).css({ left: -$(window).scrollTop()});
         clearTimeout($.data(that, 'scrollTimer'));
-        $.data(that, 'scrollTimer', setTimeout(function () {
-            /*$('.body-section').animate({ left: -$(window).scrollTop()}, 250);*/
-            $('.body-section').stop( true ).css({ left: -$(window).scrollTop()});
-            if (($(window).scrollTop() < ($('.vertical-scroll-div').height() * 0.5)) &&
-                ($(window).scrollTop() >= ($('.vertical-scroll-div').height() * 0.25)) &&
-                !$('.ourCompanies').hasClass('is-active')) {
-                $('.section-slider li').removeClass('is-active');
-                $('.ourCompanies').addClass('is-active');
-            }
-            else if (($(window).scrollTop() >= ($('.vertical-scroll-div').height() * 0.5))  &&
-                !$('.ourBoard').hasClass('is-active')) {
-                $('.section-slider li').removeClass('is-active');
-                $('.ourBoard').addClass('is-active');
-            } else if (($(window).scrollTop() < ($('.vertical-scroll-div').height() * 0.25)) &&
-                !$('.aboutApplerigg').hasClass('is-active')) {
-                $('.section-slider li').removeClass('is-active');
-                $('.aboutApplerigg').addClass('is-active');
-            }
-        }, 10));
+        $.data(that, 'scrollTimer', setTimeout(scrollTimeOutFn, 250));
+    }
+    // utility timeout function for scroll syncing
+    function scrollTimeOutFn() {
+        /*$('.body-section').animate({ left: -$(window).scrollTop()}, 250);*/
+        /*$('.body-section').stop( true, true ).animate({ left: -$(window).scrollTop()});*/
+        if (($(window).scrollTop() < ($('.vertical-scroll-div').height() * 0.5)) &&
+            ($(window).scrollTop() >= ($('.vertical-scroll-div').height() * 0.25)) &&
+            !$('.ourCompanies').hasClass('is-active')) {
+            $('.section-slider li').removeClass('is-active');
+            $('.ourCompanies').addClass('is-active');
+        }
+        else if (($(window).scrollTop() >= ($('.vertical-scroll-div').height() * 0.5))  &&
+            !$('.ourBoard').hasClass('is-active')) {
+            $('.section-slider li').removeClass('is-active');
+            $('.ourBoard').addClass('is-active');
+        } else if (($(window).scrollTop() < ($('.vertical-scroll-div').height() * 0.25)) &&
+            !$('.aboutApplerigg').hasClass('is-active')) {
+            $('.section-slider li').removeClass('is-active');
+            $('.aboutApplerigg').addClass('is-active');
+        }
+        $('.company-details-item').children(".detailed").removeClass('lift-company').addClass('dip-company').end()
+            .children(".cool-line").removeClass("sink-line").addClass("raise-line").end()
+            .find("img.color").addClass('display-none').end()
+            .find("img.grey").removeClass('display-none');
+        beingScrolled = false;
     }
 
     /* gallery animations and resets */
