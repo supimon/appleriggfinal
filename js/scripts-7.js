@@ -126,15 +126,16 @@ $(document).ready(function() {
             currWidth = getCurrWidth();
             tablet = (currWidth == 'xxl' || currWidth == 'lg' || currWidth == 'md') ? true : false;
             if(!tablet){
+                myScroll.destroy();
+                myScroll = null;
                 $('.body-section').removeClass('fixed-pos-div').width('auto');
                 $('.vertical-scroll-div').css({'display': 'none'});
                 $('.body-section').animate({
                     scrollLeft: 0,
                     easing: "easein"
                 }, 200, resizeHandler);
-                myScroll.destroy();
-                myScroll = null;
-            }else{
+            }
+            else{
                 $('body').scrollTop(0);
                 $('.body-section').animate({
                     left: 0,
