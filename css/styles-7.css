@@ -398,7 +398,8 @@ address{
     display: inline-block;
 }
 .company-details-item .logo-wrapper{
-    width: 262px;
+    max-width: 262px;
+    width: 100%;
     display: inline-block;
     margin-top: 30px;
     margin-bottom: 48px;
@@ -1007,6 +1008,7 @@ footer img{
         top: auto;
         left: 0px;
         width: 100%;
+        max-width: none;
         bottom: 25px;
         padding: 0px;
         display: block;

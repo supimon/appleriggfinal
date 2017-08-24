@@ -75,6 +75,11 @@ $(document).ready(function() {
             if(tablet) {
                 addHorizontalScroll();
             }
+
+            console.log('#aboutApplerigg: '+leftPos['#aboutApplerigg'][0]+
+                        '\n#ourCompanies: '+leftPos['#ourCompanies'][0]+
+                        '\n#ourBoard: '+leftPos['#ourBoard'][0]);
+
         }
     });
     //utility function for adding horizontal scroll
@@ -278,35 +283,19 @@ $(document).ready(function() {
 
     $('.section-slider a, .menu-holder a').click(function (e) {
         e.preventDefault();
-        $(window).unbind('scroll');
         var id = $(this).attr("href");
         if((id != '#ourBoard') && $('.img-gallery').hasClass('detail-view')) galleryCloseHandler();
         if($(this).parents('.menu-holder').length) $('.hamburger').trigger('click');
         $('.section-slider li').removeClass('is-active');
         $('.'+id.substring(1)).addClass('is-active');
         if(tablet){
-            $('.body-section').animate({
-                left: -leftPos[id][0],
-                easing: "easein"
-            }, 1000, function(){
-                $(window).scroll(function(){
-                    scrollHandler(this);
-                });
-            });
-            $('body').scrollTop(leftPos[id][0]);
+            myScroll.scrollTo(-leftPos[id][0], 0, 1000, IScroll.utils.ease.quadratic);
         }
-        else{
-            if(currWidth == 'xxs' || currWidth == 'xs' || currWidth == 'sm')
-                $('body').animate({
-                    scrollTop: $(id).offset().top,
-                    easing: "easein"
-                }, 1000);
-            else
-                $('.body-section').animate({
-                    scrollLeft: leftPos[id][0],
-                    easing: "easein"
-                }, 1000);
-
+        else {
+            $('body').animate({
+                scrollTop: $(id).offset().top,
+                easing: "easein"
+            }, 1000);
         }
     });
     // highlight slider dots based on scroll position
