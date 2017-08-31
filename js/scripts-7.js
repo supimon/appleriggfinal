@@ -88,11 +88,11 @@ $(document).ready(function() {
         myScroll.on('scrollStart', function(){ beingScrolled = true; });
         myScroll.on('scrollEnd', function(){
             $('.company-details-item')
-                .children(".detailed").removeClass('lift-company').addClass('dip-company').end()
-                .children(".cool-line").removeClass("sink-line").addClass("raise-line").end()
+                // .children(".detailed").removeClass('lift-company').addClass('dip-company').end()
+                // .children(".cool-line").removeClass("sink-line").addClass("raise-line").end()
                 .find("img.color").addClass('display-none').end()
                 .find("img.grey").removeClass('display-none');
-            beingScrolled = false;
+            // beingScrolled = false;
 
             if (($('#ourCompanies').offset().left < ($(window).width()/2)) &&
                 ($('#ourCompanies').offset().left >= -($(window).width()/2)) &&
