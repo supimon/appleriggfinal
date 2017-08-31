@@ -997,11 +997,19 @@ footer img{
         display: block;
     }
     .company-details-item .detailed.lift-company h3,
+    .company-details-item:hover h3,
     .company-details-item .detailed.lift-company a{
         color: #005d3d;
     }
-    .company-details-item .detailed.lift-company p{
+    .company-details-item .detailed.lift-company p,
+    .company-details-item:hover p{
         color: #404040;
+    }
+    .company-details-item:hover img.color{
+        display: block !important;
+    }
+    .company-details-item:hover img.grey{
+        display: none !important;
     }
     .company-details-item .logo-wrapper{
         position: absolute;
