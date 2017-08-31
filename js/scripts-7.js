@@ -220,7 +220,7 @@ $(document).ready(function() {
 
     /* company lift animation */
 
-    $('.company-details-item')
+    /*$('.company-details-item')
         .on('mouseover', function(){
             if(!beingScrolled)
                 $(this).children(".detailed").removeClass('dip-company').addClass('lift-company').end()
@@ -234,7 +234,7 @@ $(document).ready(function() {
                     .children(".cool-line").removeClass("sink-line").addClass("raise-line").end()
                     .find("img.color").addClass('display-none').end()
                     .find("img.grey").removeClass('display-none');
-        });
+        });*/
 
     /* menu swipe animation */
 
