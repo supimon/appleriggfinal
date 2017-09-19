@@ -725,11 +725,17 @@ footer img{
     .page-nav-arrow.right .page-nav-arrow-inner:before{
         transform: translate3d(6px, 8px, 0) rotate(45deg) scale(0.5, 1);
     }
+    .page-nav-arrow.left .page-nav-arrow-inner:before{
+        transform: translate3d(-9px, 8px, 0) rotate(-45deg) scale(0.5, 1);
+    }
     .hamburger.open .hamburger-inner:after{
         transform: translate3d(-6px, -6px, 0) rotate(45deg) scale(0.7, 1);
     }
     .page-nav-arrow.right .page-nav-arrow-inner:after{
         transform: translate3d(6px, -8px, 0) rotate(-45deg) scale(0.5, 1);
+    }
+    .page-nav-arrow.left .page-nav-arrow-inner:after{
+        transform: translate3d(-9px, -8px, 0) rotate(45deg) scale(0.5, 1);
     }
 
     /*about section*/
