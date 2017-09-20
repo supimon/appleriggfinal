@@ -7,7 +7,8 @@ $(document).ready(function() {
         leftPos = {
             '#aboutApplerigg': [$('#aboutApplerigg').offset().left, 0],
             '#ourCompanies' : [$('#ourCompanies').offset().left, 0.25],
-            '#ourBoard' : [$('#ourBoard').offset().left, 0.75]
+            '#ourBoard' : [$('#ourBoard').offset().left, 0.75],
+            '#footer' : [  '', 1]
         },
         currThumb = 0,
         moveY = "",
@@ -75,10 +76,12 @@ $(document).ready(function() {
             if(tablet) {
                 addHorizontalScroll();
             }
-
+            var temp = $('#scroller').width() - ($('#ourBoard').offset().left + $(window).width());
+            leftPos['#footer'][0] = $('#ourBoard').offset().left + temp;
             console.log('#aboutApplerigg: '+leftPos['#aboutApplerigg'][0]+
                         '\n#ourCompanies: '+leftPos['#ourCompanies'][0]+
-                        '\n#ourBoard: '+leftPos['#ourBoard'][0]);
+                        '\n#ourBoard: '+leftPos['#ourBoard'][0] +
+                        '\n#footer: '+leftPos['#footer'][0]);
 
         }
     });
@@ -94,7 +97,7 @@ $(document).ready(function() {
                 .find("img.grey").removeClass('display-none');
             // beingScrolled = false;
 
-            if (($('#ourCompanies').offset().left < ($(window).width()/2)) &&
+            /*if (($('#ourCompanies').offset().left < ($(window).width()/2)) &&
                 ($('#ourCompanies').offset().left >= -($(window).width()/2)) &&
                 !$('.ourCompanies').hasClass('is-active')) {
                 $('.section-slider li').removeClass('is-active');
@@ -109,7 +112,33 @@ $(document).ready(function() {
                 !$('.aboutApplerigg').hasClass('is-active')){
                 $('.section-slider li').removeClass('is-active');
                 $('.aboutApplerigg').addClass('is-active');
+            }*/
+
+            if (($('#ourCompanies').offset().left <= 0) &&
+                ($('#ourCompanies').offset().left > -$('#ourCompanies').width() - $('.company-holder').width())) {
+                $(".page-nav-arrow").removeClass("left").addClass("right").data("href", "#ourBoard");
+                if($('company-pager').css('display') == "none") $('company-pager').fadeIn();
+                //console.log('in our companies pointing to ourBoard');
             }
+            else if(($('#ourBoard').offset().left <= 0) &&
+                ((Math.abs($('#scroller').offset().left - $(window).width() + $('#scroller').width())) > 2)) {
+                $(".page-nav-arrow").removeClass("left").addClass("right").data("href", "#footer");
+                if($('company-pager').css('display') != "none") $('company-pager').fadeOut();
+                //console.log('in our board pointing to footer');
+            }
+            else if(($('#ourBoard').offset().left <= 0) &&
+                ((Math.abs($('#scroller').offset().left - $(window).width() + $('#scroller').width())) <= 2)) {
+                $(".page-nav-arrow").removeClass("right").addClass("left").data("href", "#aboutApplerigg");
+                if($('company-pager').css('display') != "none") $('company-pager').fadeOut();
+                //console.log('in footer pointing to aboutApplerigg');
+            }
+            else if($('#aboutApplerigg').offset().left <= 0 &&
+                ($('#aboutApplerigg').offset().left > -$('#aboutApplerigg').width())){
+                $(".page-nav-arrow").removeClass("left").addClass("right").data("href", "#ourCompanies");
+                if($('company-pager').css('display') != "none") $('company-pager').fadeOut();
+                //console.log('in aboutApplerigg pointing to ourCompanies');
+            }
+
         });
         document.addEventListener('touchmove', function (e) { e.preventDefault(); }, isPassive() ? {
                 capture: false,
@@ -126,7 +155,7 @@ $(document).ready(function() {
             currWidth = getCurrWidth();
             tablet = (currWidth == 'xxl' || currWidth == 'lg' || currWidth == 'md') ? true : false;
             if(!tablet){
-                myScroll.destroy();
+                if(myScroll) myScroll.destroy();
                 myScroll = null;
                 $('.body-section').removeClass('fixed-pos-div').width('auto');
                 $('.vertical-scroll-div').css({'display': 'none'});
@@ -171,10 +200,12 @@ $(document).ready(function() {
                 $('.cool-line').removeClass('collapse-line');
             }
         });
+        var temp = $('#scroller').width() - ($('#ourBoard').offset().left + $(window).width());
         leftPos = {
             '#aboutApplerigg': [$('#aboutApplerigg').offset().left, 0],
             '#ourCompanies' : [$('#ourCompanies').offset().left, 0.25],
-            '#ourBoard' : [$('#ourBoard').offset().left, 0.75]
+            '#ourBoard' : [$('#ourBoard').offset().left, 0.75],
+            '#footer' : [$('#ourBoard').offset().left + temp, 1]
         };
 
         $('#testim-slider, #testim-slider ul li').each(function(){ $(this).height('auto'); });
@@ -282,9 +313,28 @@ $(document).ready(function() {
 
     /* scroll to the intended section */
 
-    $('.section-slider a, .menu-holder a').click(function (e) {
+    $('.section-slider a, .menu-holder a, .page-nav-arrow').click(function (e) {
         e.preventDefault();
-        var id = $(this).attr("href");
+        var id = $(this).attr("href") || $(this).data("href");
+        switch (id){
+            case "#aboutApplerigg":
+                $(".page-nav-arrow").removeClass("left").addClass("right").data("href", "#ourCompanies");
+                break;
+            case "#ourCompanies":
+                $(".page-nav-arrow").data("href", "#ourBoard");
+                break;
+            case "#ourBoard":
+                if($('#ourBoard').width() == $(window).width()){
+                    $(".page-nav-arrow").removeClass("right").addClass("left").data("href", "#aboutApplerigg");
+                }
+                else{
+                    $(".page-nav-arrow").data("href", "#footer");
+                }
+                break;
+            default :
+                $(".page-nav-arrow").removeClass("right").addClass("left").data("href", "#aboutApplerigg");
+                break;
+        }
         if((id != '#ourBoard') && $('.img-gallery').hasClass('detail-view')) galleryCloseHandler();
         if($(this).parents('.menu-holder').length) $('.hamburger').trigger('click');
         $('.section-slider li').removeClass('is-active');
