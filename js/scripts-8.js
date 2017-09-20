@@ -19,10 +19,12 @@ $(document).ready(function() {
         testimSliderWidth = testimItemWidth * testimSlideCount,
         totalBodyWidth, leftLimit, totalBodyHeight,
         beingScrolled = false,
-        tablet = (currWidth == 'xxl' || currWidth == 'lg' || currWidth == 'md') ? true : false; // test
+        tablet = (currWidth == 'xxl' || currWidth == 'lg' || currWidth == 'md') ? true : false, // test
+        visibleRegion, compItemWidth, itemsPerPage, totalPages, companyPagePosArr, currCompPage = 1;
 
     /* initial setups */
 
+    $('.company-pager').hide();
     if(tablet){
         totalBodyWidth = $('#aboutApplerigg').width()+ $('#ourCompanies').width()+
             $('.company-holder').width()+ $('#ourBoard').width(),
@@ -30,7 +32,29 @@ $(document).ready(function() {
             totalBodyHeight = leftLimit + $(window).height();
         $('.body-section').addClass('fixed-pos-div').width(totalBodyWidth);
         $('.about-title').height($('.about-contents').height());
+        visibleRegion = $(window).width() - 100; // hardcoded value
+        compItemWidth = $($('.company-details-item')[0]).outerWidth();
+        itemsPerPage = Math.floor(visibleRegion / compItemWidth);
+        totalPages = Math.ceil($('.company-details-item').length / itemsPerPage);
+        if(totalPages == 1) $('.comp-arrow-holder').addClass('inactive');
+        $('.curr-comp-page').text(""+currCompPage);
+        $('.total-comp-page').text(""+totalPages);
+        companyPageLookupArray();
+        //console.log(companyPagePosArr[0]+'\n'+companyPagePosArr[1]+'\n'+companyPagePosArr[2]);
+        //console.log("totalPages: "+totalPages);
+        //console.log("itemsPerPage: "+itemsPerPage);
+        //console.log("compItemWidth: "+compItemWidth);
     }
+    // utility function
+    function companyPageLookupArray(){
+        companyPagePosArr = [];
+        for(var i = 0; i < totalPages; i++){
+            companyPagePosArr.push(
+                $('.company-holder').offset().left + (i * itemsPerPage * compItemWidth) - 50
+            );
+        }
+    }
+
     // fix for latest safari
     setTimeout(function(){
         if(tablet && ($('.about-title').height() != $('.about-contents').height()))
@@ -78,10 +102,10 @@ $(document).ready(function() {
             }
             var temp = $('#scroller').width() - ($('#ourBoard').offset().left + $(window).width());
             leftPos['#footer'][0] = $('#ourBoard').offset().left + temp;
-            console.log('#aboutApplerigg: '+leftPos['#aboutApplerigg'][0]+
+            /*console.log('#aboutApplerigg: '+leftPos['#aboutApplerigg'][0]+
                         '\n#ourCompanies: '+leftPos['#ourCompanies'][0]+
                         '\n#ourBoard: '+leftPos['#ourBoard'][0] +
-                        '\n#footer: '+leftPos['#footer'][0]);
+                        '\n#footer: '+leftPos['#footer'][0]);*/
 
         }
     });
@@ -117,26 +141,58 @@ $(document).ready(function() {
             if (($('#ourCompanies').offset().left <= 0) &&
                 ($('#ourCompanies').offset().left > -$('#ourCompanies').width() - $('.company-holder').width())) {
                 $(".page-nav-arrow").removeClass("left").addClass("right").data("href", "#ourBoard");
-                if($('company-pager').css('display') == "none") $('company-pager').fadeIn();
                 //console.log('in our companies pointing to ourBoard');
             }
             else if(($('#ourBoard').offset().left <= 0) &&
                 ((Math.abs($('#scroller').offset().left - $(window).width() + $('#scroller').width())) > 2)) {
                 $(".page-nav-arrow").removeClass("left").addClass("right").data("href", "#footer");
-                if($('company-pager').css('display') != "none") $('company-pager').fadeOut();
                 //console.log('in our board pointing to footer');
-            }
-            else if(($('#ourBoard').offset().left <= 0) &&
-                ((Math.abs($('#scroller').offset().left - $(window).width() + $('#scroller').width())) <= 2)) {
-                $(".page-nav-arrow").removeClass("right").addClass("left").data("href", "#aboutApplerigg");
-                if($('company-pager').css('display') != "none") $('company-pager').fadeOut();
-                //console.log('in footer pointing to aboutApplerigg');
             }
             else if($('#aboutApplerigg').offset().left <= 0 &&
                 ($('#aboutApplerigg').offset().left > -$('#aboutApplerigg').width())){
                 $(".page-nav-arrow").removeClass("left").addClass("right").data("href", "#ourCompanies");
-                if($('company-pager').css('display') != "none") $('company-pager').fadeOut();
                 //console.log('in aboutApplerigg pointing to ourCompanies');
+            }
+            else if(($('#ourBoard').width() <= $(window).width()) ||
+                ($('#ourBoard').offset().left <= 0) &&
+                ((Math.abs($('#scroller').offset().left - $(window).width() + $('#scroller').width())) <= 2)) {
+                $(".page-nav-arrow").removeClass("right").addClass("left").data("href", "#aboutApplerigg");
+                //console.log('in footer pointing to aboutApplerigg');
+            }
+
+            if(($('#ourCompanies').offset().left < 100) &&
+                ($('#ourBoard').offset().left > ($(window).width()/2))){
+                if($('.company-pager').css('display') == "none") $('.company-pager').fadeIn();
+            }else{
+                if($('.company-pager').css('display') != "none") $('.company-pager').fadeOut();
+            }
+
+            if(companyPagePosArr.length > 1){
+                for(var q = 1; q < companyPagePosArr.length; q++){
+
+                    if( (q == 1) && ($('#scroller').offset().left > -companyPagePosArr[q]) ) {
+                        currCompPage = q;
+                        $('.curr-comp-page').text(""+q);
+                        $('.comp-arrow-holder.right').removeClass('inactive');
+                        $('.comp-arrow-holder.left').addClass('inactive');
+                        break;
+                    }
+                    if( (q == companyPagePosArr.length - 1) && ($('#scroller').offset().left < -companyPagePosArr[q])) {
+                        currCompPage = q+1;
+                        $('.curr-comp-page').text(""+(q+1));
+                        $('.comp-arrow-holder.left').removeClass('inactive');
+                        $('.comp-arrow-holder.right').addClass('inactive');
+                        break;
+                    }
+                    if( $('#scroller').offset().left < -companyPagePosArr[q-1] &&
+                        $('#scroller').offset().left > -companyPagePosArr[q]) {
+                        currCompPage = q;
+                        $('.curr-comp-page').text(""+q);
+                        $('.comp-arrow-holder').removeClass('inactive');
+                        break;
+                    }
+
+                }
             }
 
         });
@@ -185,7 +241,17 @@ $(document).ready(function() {
     function resizeHandler(){
         if(tablet){
             $('.about-title').height($('.about-contents').height());
-            addHorizontalScroll()
+            visibleRegion = $(window).width() - 100;
+            compItemWidth = $($('.company-details-item')[0]).outerWidth();
+            itemsPerPage = visibleRegion / compItemWidth;
+            totalPages = Math.ceil($('.company-details-item').length / itemsPerPage);
+            currCompPage = 1;
+            $('.comp-arrow.left').addClass('inactive');
+            if(totalPages == 1) $('.comp-arrow').addClass('inactive');
+            $('.curr-comp-page').text(""+currCompPage);
+            $('.total-comp-page').text(""+totalPages);
+            companyPageLookupArray();
+            addHorizontalScroll();
         }
         menuAreaLeftPos = {
             "pos" : getMenuLeftPos()
@@ -347,6 +413,24 @@ $(document).ready(function() {
                 scrollTop: $(id).offset().top,
                 easing: "easein"
             }, 1000);
+        }
+    });
+
+
+    $('.comp-arrow-holder').click(function (e) {
+        if(!$(this).hasClass('inactive')){
+            if($(this).hasClass('right')){
+                (currCompPage + 1) == totalPages ?  $(this).addClass('inactive') :
+                    $('.comp-arrow-holder.left').removeClass('inactive');
+                currCompPage += 1;
+            }
+            else{
+                (currCompPage - 1) == 1 ?  $(this).addClass('inactive') :
+                    $('.comp-arrow-holder.right').removeClass('inactive');
+                currCompPage -= 1;
+            }
+            $('.curr-comp-page').text(""+currCompPage);
+            myScroll.scrollTo(-companyPagePosArr[currCompPage-1], 0, 1000, IScroll.utils.ease.quadratic);
         }
     });
     // highlight slider dots based on scroll position

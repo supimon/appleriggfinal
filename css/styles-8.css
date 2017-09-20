@@ -58,8 +58,61 @@ body.pointer-events-none .body-section {
     left: 0px;
     overflow-x: hidden;
 }
-.page-nav-bar{
-    display: none;
+.company-pager span{
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+}
+.total-comp-page{
+    margin-right: 15px;
+}
+.comp-arrow{
+    width: 20px;
+    height: 1px;
+    background-color: white;
+    position: relative;
+}
+.comp-arrow-holder.inactive{
+    opacity: 0.4;
+}
+.comp-arrow-holder{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.comp-arrow-holder.right{
+    margin-left: 9px;
+}
+.comp-arrow:before,
+.comp-arrow:after{
+    content: " ";
+    position: absolute;
+    width: 16px;
+    height: 1px;
+    background-color: white;
+}
+.comp-arrow:before{
+    top: -9px;
+    left: 0px;
+}
+.comp-arrow:after{
+    top: 9px;
+    left: 0px;
+}
+.comp-arrow.left:before{
+    transform: translate3d(-6px, 6px, 0) rotate(-45deg) scale(0.5, 1);
+ }
+.comp-arrow.left:after{
+    transform: translate3d(-6px, -6px, 0) rotate(45deg) scale(0.5, 1);
+}
+.comp-arrow.right:before{
+    transform: translate3d(10px, 6px, 0) rotate(45deg) scale(0.5, 1);
+}
+.comp-arrow.right:after{
+    transform: translate3d(10px, -6px, 0) rotate(-45deg) scale(0.5, 1);
 }
 /*logo*/
 .mobile-logo-holder{
@@ -852,6 +905,20 @@ footer img{
         background-color: #494c50;
         z-index: 2;
     }
+    .company-pager{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 149px;
+        height: 53px;
+        position: fixed;
+        bottom: 0px;
+        right: 8%;
+        background-color: #005d3d;
+        color: white;
+        z-index: 2;
+        font-family: 'Lato', Arial, sans-serif;
+    }
     /*logo*/
     .mobile-logo-holder {
         left: auto;
@@ -870,6 +937,9 @@ footer img{
         left: auto;
         right: 0px;
         bottom: 20px;
+    }
+    .section-slider {
+        display: none !important;
     }
     .slide-indicator-ul li:before {
         left: 7px;
@@ -1721,6 +1791,10 @@ footer img{
     }
     .company-details-item .img-70.grey{
         display: none;
+    }
+    .page-nav-bar,
+    .company-pager{
+        display: none !important;
     }
 }
 
