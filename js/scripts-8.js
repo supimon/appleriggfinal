@@ -32,7 +32,8 @@ $(document).ready(function() {
             totalBodyHeight = leftLimit + $(window).height();
         $('.body-section').addClass('fixed-pos-div').width(totalBodyWidth);
         $('.about-title').height($('.about-contents').height());
-        visibleRegion = $(window).width() - 100; // hardcoded value
+
+        visibleRegion = $(window).width() - 100; // rough total area occupied
         compItemWidth = $($('.company-details-item')[0]).outerWidth();
         itemsPerPage = Math.floor(visibleRegion / compItemWidth);
         totalPages = Math.ceil($('.company-details-item').length / itemsPerPage);
@@ -45,13 +46,11 @@ $(document).ready(function() {
         //console.log("itemsPerPage: "+itemsPerPage);
         //console.log("compItemWidth: "+compItemWidth);
     }
-    // utility function
+    // utility function for creating company sub section positions
     function companyPageLookupArray(){
-        companyPagePosArr = [];
+        companyPagePosArr = []; // array needs to be created during resize
         for(var i = 0; i < totalPages; i++){
-            companyPagePosArr.push(
-                $('.company-holder').offset().left + (i * itemsPerPage * compItemWidth) - 50
-            );
+            companyPagePosArr.push( $('.company-holder').offset().left + (i * itemsPerPage * compItemWidth) - 50 );
         }
     }
 
@@ -115,28 +114,9 @@ $(document).ready(function() {
         myScroll.on('scrollStart', function(){ beingScrolled = true; });
         myScroll.on('scrollEnd', function(){
             $('.company-details-item')
-                // .children(".detailed").removeClass('lift-company').addClass('dip-company').end()
-                // .children(".cool-line").removeClass("sink-line").addClass("raise-line").end()
                 .find("img.color").addClass('display-none').end()
                 .find("img.grey").removeClass('display-none');
-            // beingScrolled = false;
 
-            /*if (($('#ourCompanies').offset().left < ($(window).width()/2)) &&
-                ($('#ourCompanies').offset().left >= -($(window).width()/2)) &&
-                !$('.ourCompanies').hasClass('is-active')) {
-                $('.section-slider li').removeClass('is-active');
-                $('.ourCompanies').addClass('is-active');
-            }
-            else if(($('#ourBoard').offset().left < ($(window).width()/2)) &&
-                !$('.ourBoard').hasClass('is-active')){
-                $('.section-slider li').removeClass('is-active');
-                $('.ourBoard').addClass('is-active');
-            }
-            else if(($('#ourCompanies').offset().left >= ($(window).width()/2)) &&
-                !$('.aboutApplerigg').hasClass('is-active')){
-                $('.section-slider li').removeClass('is-active');
-                $('.aboutApplerigg').addClass('is-active');
-            }*/
 
             if (($('#ourCompanies').offset().left <= 0) &&
                 ($('#ourCompanies').offset().left > -$('#ourCompanies').width() - $('.company-holder').width())) {
@@ -315,24 +295,6 @@ $(document).ready(function() {
         }
     }
 
-    /* company lift animation */
-
-    /*$('.company-details-item')
-        .on('mouseover', function(){
-            if(!beingScrolled)
-                $(this).children(".detailed").removeClass('dip-company').addClass('lift-company').end()
-                    .children(".cool-line").removeClass("raise-line").addClass("sink-line").end()
-                    .find("img.grey").addClass('display-none').end()
-                    .find("img.color").removeClass('display-none');
-        })
-        .on('mouseout', function(){
-            if(!beingScrolled)
-                $(this).children(".detailed").removeClass('lift-company').addClass('dip-company').end()
-                    .children(".cool-line").removeClass("sink-line").addClass("raise-line").end()
-                    .find("img.color").addClass('display-none').end()
-                    .find("img.grey").removeClass('display-none');
-        });*/
-
     /* menu swipe animation */
 
     $('.hamburger').on('click', function(){
@@ -379,6 +341,7 @@ $(document).ready(function() {
 
     /* scroll to the intended section */
 
+    // navigation via menu and grey fixed bar
     $('.section-slider a, .menu-holder a, .page-nav-arrow').click(function (e) {
         e.preventDefault();
         var id = $(this).attr("href") || $(this).data("href");
@@ -415,8 +378,7 @@ $(document).ready(function() {
             }, 1000);
         }
     });
-
-
+    // navigation within the company section
     $('.comp-arrow-holder').click(function (e) {
         if(!$(this).hasClass('inactive')){
             if($(this).hasClass('right')){
@@ -433,29 +395,7 @@ $(document).ready(function() {
             myScroll.scrollTo(-companyPagePosArr[currCompPage-1], 0, 1000, IScroll.utils.ease.quadratic);
         }
     });
-    // highlight slider dots based on scroll position
-    /*if(!tablet){
-        $('.body-section').scroll(function() {
-            clearTimeout($.data(this, 'scrollTimer'));
-            $.data(this, 'scrollTimer', setTimeout(function() {
-                if (($('#ourCompanies').offset().left < ($(window).width()/2)) &&
-                    ($('#ourCompanies').offset().left >= -($(window).width()/2)) &&
-                    !$('.ourCompanies').hasClass('is-active')) {
-                    $('.section-slider li').removeClass('is-active');
-                    $('.ourCompanies').addClass('is-active');
-                }
-                else if(($('#ourBoard').offset().left < ($(window).width()/2)) &&
-                    !$('.ourBoard').hasClass('is-active')){
-                    $('.section-slider li').removeClass('is-active');
-                    $('.ourBoard').addClass('is-active');
-                }else if(($('#ourCompanies').offset().left >= ($(window).width()/2)) &&
-                    !$('.aboutApplerigg').hasClass('is-active')){
-                    $('.section-slider li').removeClass('is-active');
-                    $('.aboutApplerigg').addClass('is-active');
-                }
-            }, 250));
-        });
-    }*/
+
 
     /* gallery animations and resets */
 
