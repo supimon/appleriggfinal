@@ -20,6 +20,7 @@ $(document).ready(function() {
         totalBodyWidth, leftLimit, totalBodyHeight,
         beingScrolled = false,
         tablet = (currWidth == 'xxl' || currWidth == 'lg' || currWidth == 'md') ? true : false, // test
+        pageOffset = currWidth == 'md' ? 136 : 236,
         visibleRegion, compItemWidth, itemsPerPage, totalPages, companyPagePosArr, currCompPage = 1;
 
     /* initial setups */
@@ -33,7 +34,7 @@ $(document).ready(function() {
         $('.body-section').addClass('fixed-pos-div').width(totalBodyWidth);
         $('.about-title').height($('.about-contents').height());
 
-        visibleRegion = $(window).width() - 100; // rough total area occupied
+        visibleRegion = $(window).width() - pageOffset; // rough total area occupied
         compItemWidth = $($('.company-details-item')[0]).outerWidth();
         itemsPerPage = Math.floor(visibleRegion / compItemWidth);
         totalPages = Math.ceil($('.company-details-item').length / itemsPerPage);
@@ -141,7 +142,8 @@ $(document).ready(function() {
             }
 
             if(($('#ourCompanies').offset().left < 100) &&
-                ($('#ourBoard').offset().left > ($(window).width()/2))){
+                //($('#ourBoard').offset().left > ($(window).width()/2))){
+                ($('#ourBoard').offset().left > 200)){
                 if($('.company-pager').css('display') == "none") $('.company-pager').fadeIn();
             }else{
                 if($('.company-pager').css('display') != "none") $('.company-pager').fadeOut();
@@ -221,7 +223,8 @@ $(document).ready(function() {
     function resizeHandler(){
         if(tablet){
             $('.about-title').height($('.about-contents').height());
-            visibleRegion = $(window).width() - 100;
+            pageOffset = currWidth == 'md' ? 136 : 236
+            visibleRegion = $(window).width() - pageOffset;
             compItemWidth = $($('.company-details-item')[0]).outerWidth();
             itemsPerPage = visibleRegion / compItemWidth;
             totalPages = Math.ceil($('.company-details-item').length / itemsPerPage);
@@ -382,13 +385,13 @@ $(document).ready(function() {
     $('.comp-arrow-holder').click(function (e) {
         if(!$(this).hasClass('inactive')){
             if($(this).hasClass('right')){
-                (currCompPage + 1) == totalPages ?  $(this).addClass('inactive') :
-                    $('.comp-arrow-holder.left').removeClass('inactive');
+                if((currCompPage + 1) == totalPages) $(this).addClass('inactive');
+                $('.comp-arrow-holder.left').removeClass('inactive');
                 currCompPage += 1;
             }
             else{
-                (currCompPage - 1) == 1 ?  $(this).addClass('inactive') :
-                    $('.comp-arrow-holder.right').removeClass('inactive');
+                if((currCompPage - 1) == 1) $(this).addClass('inactive');
+                $('.comp-arrow-holder.right').removeClass('inactive');
                 currCompPage -= 1;
             }
             $('.curr-comp-page').text(""+currCompPage);
